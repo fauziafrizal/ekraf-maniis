@@ -1,0 +1,81 @@
+name: Publish Ekraf Maniis to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download repository
+        uses: actions/checkout@v4
+
+      - name: Set up PHP 8.4
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          extensions: mbstring, intl, pdo_sqlite, sqlite3, fileinfo
+          coverage: none
+          tools: composer:v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install Laravel dependencies
+        run: composer install --no-interaction --no-progress --prefer-dist --optimize-autoloader
+
+      - name: Build website styles and scripts
+        run: |
+          npm ci
+          npm run build
+
+      - name: Prepare temporary database for static export
+        env:
+          APP_ENV: production
+          APP_DEBUG: 'false'
+          APP_URL: http://127.0.0.1:8000
+          EKRAF_PUBLIC_URL: https://fauziafrizal.github.io/ekraf-maniis
+          DB_CONNECTION: sqlite
+          SESSION_DRIVER: file
+          CACHE_STORE: file
+          QUEUE_CONNECTION: sync
+          LOG_CHANNEL: stderr
+        run: |
+          cp .env.example .env
+          php artisan key:generate --force
+          touch database/database.sqlite
+          php artisan migrate --seed --force --no-interaction
+          php artisan serve --host=127.0.0.1 --port=8000 > /tmp/ekraf-pages-php.log 2>&1 &
+          python3 scripts/export_github_pages.py --output _site || { cat /tmp/ekraf-pages-php.log; exit 1; }
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload static pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
