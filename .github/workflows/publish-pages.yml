@@ -59,8 +59,10 @@ jobs:
           php artisan key:generate --force
           touch database/database.sqlite
           php artisan migrate --seed --force --no-interaction
+          php artisan db:seed --class=GitHubPagesProfileSeeder --force --no-interaction
           php artisan serve --host=127.0.0.1 --port=8000 > /tmp/ekraf-pages-php.log 2>&1 &
           python3 scripts/export_github_pages.py --output _site || { cat /tmp/ekraf-pages-php.log; exit 1; }
+          python3 -c "from pathlib import Path; html = Path('_site/profil/index.html').read_text(); photos = ('ketua.jpg', 'wakil.jpeg', 'sekertaris.jpg'); assert all(name in html and (Path('_site/images') / name).is_file() for name in photos), 'Foto pengurus tidak ditemukan pada hasil ekspor'"
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
