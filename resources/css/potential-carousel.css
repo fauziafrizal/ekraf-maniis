@@ -1,0 +1,111 @@
+@layer components {
+    .card-carousel {
+        min-width: 0;
+    }
+
+    .card-carousel-tools {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: .6rem;
+        margin-bottom: .5rem;
+        color: var(--color-muted);
+        font-size: .875rem;
+        font-weight: 620;
+    }
+
+    .card-carousel-tools[hidden] {
+        display: none;
+    }
+
+    .card-carousel-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: .35rem;
+    }
+
+    .card-carousel-buttons button {
+        min-height: 2.75rem;
+        border: 1px solid #829587;
+        border-radius: .2rem;
+        padding-inline: .6rem;
+        color: var(--color-pine);
+        background: #f8f5ed;
+        font-weight: 700;
+        cursor: pointer;
+    }
+
+    .card-carousel-buttons button:hover:not(:disabled) {
+        background: var(--color-pine);
+        color: var(--color-ivory);
+    }
+
+    .card-carousel-buttons button:disabled {
+        border-color: #aeb9aa;
+        color: #57635a;
+        background: #e8ece3;
+        cursor: default;
+    }
+
+    [data-card-track] {
+        margin-inline: -.3rem;
+        padding: .3rem .3rem .7rem;
+        gap: clamp(.8rem, 2vw, 1.3rem);
+        scroll-padding-inline: .3rem;
+        display: flex;
+        overflow-x: auto;
+        overscroll-behavior-inline: contain;
+        scroll-snap-type: x proximity;
+        scrollbar-width: thin;
+        scrollbar-color: #789180 transparent;
+    }
+
+    [data-card-track] > * {
+        flex: 0 0 86%;
+        min-width: 0;
+        scroll-snap-align: start;
+    }
+
+    [data-single-card] [data-card-track] > * {
+        flex-basis: min(100%, 34rem);
+    }
+
+    @media (min-width: 48rem) {
+        [data-card-track] > * {
+            flex-basis: 57%;
+        }
+    }
+
+    @media (min-width: 64rem) {
+        [data-card-track] > * {
+            flex-basis: 42%;
+        }
+    }
+
+    [data-card-track][data-card-dragging] {
+        scroll-behavior: auto;
+        scroll-snap-type: none;
+        user-select: none;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+        [data-card-track][data-card-overflow] {
+            cursor: grab;
+        }
+
+        [data-card-track][data-card-dragging] {
+            cursor: grabbing;
+        }
+
+        [data-card-track][data-card-dragging] * {
+            cursor: inherit;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        [data-card-track] {
+            scroll-behavior: auto;
+        }
+    }
+}
