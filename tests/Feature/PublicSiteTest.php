@@ -272,6 +272,18 @@ class PublicSiteTest extends TestCase
                 ->assertDontSee('Foto tanpa berkas')
                 ->assertDontSee('Foto tanpa kredit');
 
+            $this->get('/')
+                ->assertOk()
+                ->assertSee('href="#sorotan-kegiatan"', false)
+                ->assertSee('Sorotan Kegiatan')
+                ->assertSeeInOrder(['Foto mandiri terbit', 'Foto terkait terbit'])
+                ->assertDontSee('Foto dari kegiatan draf')
+                ->assertDontSee('Foto dari kegiatan terjadwal')
+                ->assertDontSee('Foto dijadwalkan')
+                ->assertDontSee('Foto draf')
+                ->assertDontSee('Foto tanpa berkas')
+                ->assertDontSee('Foto tanpa kredit');
+
             $this->get('/kegiatan/kegiatan-publik')
                 ->assertOk()
                 ->assertSee('alt="Tempat berlangsungnya kegiatan"', false)

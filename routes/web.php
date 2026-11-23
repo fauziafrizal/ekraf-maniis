@@ -15,3 +15,7 @@ Route::controller(PublicSiteController::class)->group(function () {
     Route::get('/kontak', 'contact')->name('contact');
     Route::get('/sitemap.xml', 'sitemap')->name('sitemap');
 });
+
+Route::get('/musik-latar.mp3', function () {
+    return response()->file(public_path('audio/musik-degung-sunda.mp3'), ['Content-Type' => 'audio/mpeg']);
+})->name('site.music');

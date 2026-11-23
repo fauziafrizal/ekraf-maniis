@@ -1,49 +1,60 @@
 @extends('layouts.public')
 
 @section('content')
-    <x-page-heading :title="$program->title" :description="$program->summary" eyebrow="Program">
-        <x-program-status :status="$program->status" />
-    </x-page-heading>
-
-    <div class="site-shell grid gap-10 py-12 sm:py-16 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,0.65fr)] lg:gap-14 lg:py-20">
-        <article class="min-w-0">
-            <a class="inline-flex font-semibold text-pine underline underline-offset-4" href="{{ route('programs.index') }}">Kembali ke daftar program</a>
-            <h2 class="section-title mt-7">Tentang program</h2>
-            <x-content-paragraphs :text="$program->body" class="mt-5" />
-
-            <div class="mt-8 border-t border-[#dfe4d8] pt-6">
-                <h2 class="text-xl font-semibold text-pine">Peluang kolaborasi</h2>
-                <p class="prose-copy mt-2">Sampaikan ide atau pertanyaan tentang program ini kepada pengurus.</p>
-                <a class="mt-3 inline-flex font-semibold text-pine underline underline-offset-4" href="{{ route('contact') }}">Kontak {{ $site['short_name'] }}</a>
+    <header class="program-detail-hero">
+        <div class="site-shell">
+            <a class="detail-return" href="{{ route('programs.index') }}">Kembali ke daftar program</a>
+            <div class="program-detail-masthead">
+                <div class="program-detail-meta">
+                    <p class="detail-kicker">Program</p>
+                    <x-program-status :status="$program->status" />
+                </div>
+                <h1 class="detail-title">{{ $program->title }}</h1>
+                <p class="detail-lead">{{ $program->summary }}</p>
             </div>
-        </article>
+        </div>
+    </header>
 
-        <section class="h-fit rounded-2xl border border-[#dfe4d8] bg-[#f9faf5] p-6 sm:p-8" aria-labelledby="program-information">
-            <h2 id="program-information" class="text-xl font-semibold text-pine">Informasi program</h2>
-            <dl class="mt-5 divide-y divide-[#dfe4d8]">
-                <div class="pb-4">
-                    <dt class="font-semibold text-pine">Sasaran</dt>
-                    <dd class="prose-copy mt-1 wrap-anywhere">{{ $program->audience }}</dd>
+    <div class="site-shell program-detail-grid">
+        <section class="program-detail-facts" aria-labelledby="program-information">
+            <h2 id="program-information">Informasi program</h2>
+            <dl>
+                <div>
+                    <dt>Sasaran</dt>
+                    <dd>{{ $program->audience }}</dd>
                 </div>
                 @if ($program->starts_at)
-                    <div class="py-4">
-                        <dt class="font-semibold text-pine">Jadwal</dt>
-                        <dd class="prose-copy mt-1 wrap-anywhere">
+                    <div>
+                        <dt>Jadwal</dt>
+                        <dd>
                             <time datetime="{{ $program->starts_at->toIso8601String() }}">{{ $program->starts_at->translatedFormat('j F Y, H.i') }} WIB</time>
                         </dd>
                     </div>
                 @endif
                 @if (filled($program->location))
-                    <div class="py-4">
-                        <dt class="font-semibold text-pine">Lokasi</dt>
-                        <dd class="prose-copy mt-1 wrap-anywhere">{{ $program->location }}</dd>
+                    <div>
+                        <dt>Lokasi</dt>
+                        <dd>{{ $program->location }}</dd>
                     </div>
                 @endif
             </dl>
 
             @if ($registrationUrl)
-                <a class="button-primary mt-4" href="{{ $registrationUrl }}">Daftar</a>
+                <a class="button-primary" href="{{ $registrationUrl }}">Daftar</a>
             @endif
         </section>
+
+        <article class="program-detail-story">
+            <div data-reveal>
+                <h2 class="section-title">Tentang program</h2>
+                <x-content-paragraphs :text="$program->body" class="detail-body" />
+            </div>
+
+            <div class="program-detail-collaboration" data-reveal>
+                <h2>Peluang kolaborasi</h2>
+                <p class="prose-copy">Sampaikan ide atau pertanyaan tentang program ini kepada pengurus.</p>
+                <a class="detail-return" href="{{ route('contact') }}">Kontak {{ $site['short_name'] }}</a>
+            </div>
+        </article>
     </div>
 @endsection

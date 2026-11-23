@@ -60,7 +60,7 @@ App\Models\Subsector::create([
 ]);
 ```
 
-Isi `sort_order` pada pengurus, subsektor, dan galeri sesuai urutan tampilan. Gunakan `Ketua` sebagai nilai `position` untuk pengurus yang profil singkatnya ditampilkan pada halaman Profil. Pertahankan slug yang sudah dibagikan agar tautan lama tetap dapat dibuka. Untuk mengubah rekaman, temukan berdasarkan slug atau ID, ubah atribut yang perlu diperbarui, lalu panggil `save()`.
+Isi `sort_order` pada pengurus, subsektor, dan galeri sesuai urutan tampilan. Gunakan `Ketua`, `Wakil Ketua`, atau `Sekretaris` sebagai nilai `position` untuk kartu pimpinan di halaman Profil. Isi `bio` dan `photo_path` dengan materi yang disetujui jika tersedia. Pertahankan slug yang sudah dibagikan agar tautan lama tetap dapat dibuka. Untuk mengubah rekaman, temukan berdasarkan slug atau ID, ubah atribut yang perlu diperbarui, lalu panggil `save()`.
 
 Setelah pengurus menyetujui konten untuk ditayangkan, isi `published_at` dengan waktu saat ini atau jadwalkan dengan waktu mendatang dalam zona **Asia/Jakarta**. Program dan kegiatan baru muncul di daftar dan halaman detail setelah waktu terbit tercapai. Foto yang terkait dengan kegiatan juga menunggu kegiatan induknya terbit. Untuk menarik konten dari situs, kosongkan kembali `published_at`.
 
@@ -81,11 +81,18 @@ Materi awal bersumber dari `PRD_Website_Profil_Ekraf_Maniis.md`. Jalankan `php a
 Simpan berkas yang boleh ditayangkan di `public/images/` dan isi path relatif ke `public/`, misalnya `images/waduk-cirata.webp`. Untuk menggunakan penyimpanan Laravel, simpan berkas di `storage/app/public/`, jalankan `php artisan storage:link`, dan isi path seperti `storage/waduk-cirata.webp`. Simpan aset draf di luar kedua direktori publik tersebut. Jika izin tayang dicabut, tarik kontennya dan pindahkan berkas keluar dari direktori publik agar URL berkas juga berhenti berfungsi.
 
 - Isi `assets.logo` untuk logo Ekraf Maniis dan `assets.government_logo` untuk logo Pemda yang diizinkan.
-- Isi `assets.hero` atau entri yang sesuai pada `potential` dengan `image`, `alt`, `credit`, dan `location` untuk foto wilayah.
+- Isi `assets.hero` atau entri yang sesuai pada `potential` dengan `image`, `alt`, `credit`, dan `location` untuk foto wilayah. Saat mengganti foto pembuka, sesuaikan juga `source_url`, `license`, `license_url`, dan `changes` jika diperlukan.
 - Isi `photo_path` pada data pengurus untuk foto yang disetujui.
 - Isi `cover_path`, `cover_alt`, dan `cover_credit` bersama-sama untuk sampul kegiatan. Untuk galeri, isi `image_path`, `alt_text`, dan `credit`. Gunakan `caption` untuk informasi tambahan dan `activity_id` untuk mengaitkan foto ke kegiatan.
 
 Gunakan nama berkas sederhana yang terdiri dari huruf tanpa aksen, angka, dan tanda hubung. Gunakan PNG untuk logo. Foto dapat menggunakan JPEG, PNG, WebP, AVIF, atau GIF yang sudah dioptimalkan untuk web. Aplikasi membaca dimensi langsung dari berkas. Cocokkan teks alternatif, lokasi, dan kredit dengan isi serta sumber masing-masing foto. Foto galeri dapat ditinjau di `/kegiatan#galeri` setelah waktu publikasinya tercapai.
+
+
+Beranda memakai foto berlisensi dari `assets.hero_reference` selama foto utama di `assets.hero` belum lengkap. Foto rujukan Waduk Cirata diambil oleh Annisa 48 pada 23 Mei 2019. Versi situs diperkecil dan bingkai tampilannya disesuaikan. Foto tersebut tetap berlisensi CC BY-SA 4.0. [Foto asli di Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Sunset_di_Waduk_Cirata,_Jawa_Barat.jpg) · [Lisensi foto](https://creativecommons.org/licenses/by-sa/4.0/)
+
+## Musik latar
+
+Website memutar “Musik Degung Sunda” oleh fiikuri dari `public/audio/musik-degung-sunda.mp3` melalui rute `/musik-latar.mp3`. Pemutar mencoba mulai saat halaman dibuka. Jika browser menunggu interaksi, klik atau ketuk laman untuk memulai. Tombol **Musik** menjeda atau melanjutkan audio dan pilihan tersebut tersimpan di browser. [Sumber musik di Pixabay](https://pixabay.com/id/music/dunia-musik-degung-sunda-free-for-use-434888/) · [Lisensi Pixabay](https://pixabay.com/service/license-summary/)
 
 ## Materi yang perlu dilengkapi pengurus
 

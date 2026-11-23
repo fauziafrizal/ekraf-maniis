@@ -1,0 +1,108 @@
+@import './dark-theme.css';
+
+.site-preferences[hidden] {
+    display: none;
+}
+
+.site-preferences {
+    border-block-start: 1px solid #dedbcb;
+    background: #f0eddf;
+}
+
+.site-preferences-inner {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: .45rem;
+    min-height: 2.75rem;
+    padding-block: .2rem;
+}
+
+.site-preference {
+    display: inline-flex;
+    min-height: 2.25rem;
+    align-items: center;
+    gap: .45rem;
+    border: 1px solid transparent;
+    border-radius: .3rem;
+    padding: .2rem .55rem;
+    color: #173f35;
+    background: transparent;
+    font-size: .875rem;
+    font-weight: 700;
+    line-height: 1.2;
+    cursor: pointer;
+}
+
+.site-preference:hover,
+.site-preference[aria-pressed="true"] {
+    border-color: #a9b7a8;
+    background: #e2eadc;
+}
+
+.site-preference[aria-pressed="true"] .preference-icon {
+    color: #805c25;
+}
+
+.preference-icon {
+    display: grid;
+    width: 1.1rem;
+    flex: none;
+    place-items: center;
+    font-size: 1rem;
+    line-height: 1;
+}
+
+.preference-icon--theme::before {
+    display: block;
+    width: .85rem;
+    height: .85rem;
+    border: 1px solid currentColor;
+    border-radius: 50%;
+    background: linear-gradient(90deg, currentColor 50%, transparent 50%);
+    content: '';
+}
+
+:root[data-theme="dark"] .site-preferences {
+    border-color: #3d5849;
+    background: #13291f;
+}
+
+:root[data-theme="dark"] .site-preference {
+    color: #f3eddc;
+}
+
+:root[data-theme="dark"] .site-preference:hover,
+:root[data-theme="dark"] .site-preference[aria-pressed="true"] {
+    border-color: #718b73;
+    background: #274337;
+}
+
+:root[data-theme="dark"] .site-preference[aria-pressed="true"] .preference-icon {
+    color: #f3cc7c;
+}
+
+@media (min-height: 29.01rem) {
+    html.has-site-preferences {
+        scroll-padding-block-start: calc(var(--navigation-clearance) + 2.8rem);
+    }
+
+    html.has-site-preferences .site-header[data-site-header] .mobile-nav {
+        max-height: calc(100dvh - var(--navigation-clearance) - 2.8rem);
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .site-preference {
+        transition: background-color .16s ease, border-color .16s ease;
+    }
+}
+
+.footer-music-credit {
+    font-size: .875rem;
+}
+
+.footer-music-credit a {
+    text-decoration: underline;
+    text-underline-offset: .2em;
+}

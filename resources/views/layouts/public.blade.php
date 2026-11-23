@@ -41,11 +41,23 @@
     @if (!empty($logo))
         <link rel="icon" href="{{ $logo['url'] }}">
     @endif
+    <script>
+        (() => {
+            let savedTheme;
+            try {
+                savedTheme = localStorage.getItem('ekraf-theme');
+            } catch {}
+
+            document.documentElement.dataset.theme = savedTheme === 'dark' || savedTheme === 'light'
+                ? savedTheme
+                : (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        })();
+    </script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
     <a class="skip-link" href="#main-content">Lewati ke konten</a>
-    <header class="site-header">
+    <header class="site-header" data-site-header>
         <div class="site-shell header-inner">
             <a class="wordmark" href="{{ route('home', absolute: false) }}">
                 @if (!empty($logo))
@@ -73,9 +85,22 @@
                 </nav>
             </details>
         </div>
+        <div class="site-preferences" data-site-preferences hidden>
+            <div class="site-shell site-preferences-inner" role="group" aria-label="Pengaturan situs">
+                <button type="button" class="site-preference" data-music-toggle aria-pressed="false">
+                    <span class="preference-icon" aria-hidden="true">♪</span>
+                    <span>Musik</span>
+                </button>
+                <span class="sr-only" data-music-status role="status"></span>
+                <button type="button" class="site-preference" data-theme-toggle aria-pressed="false">
+                    <span class="preference-icon preference-icon--theme" aria-hidden="true"></span>
+                    <span>Tema gelap</span>
+                </button>
+            </div>
+        </div>
     </header>
 
-    <main id="main-content" tabindex="-1">
+    <main id="main-content" tabindex="-1" data-page="{{ request()->route()?->getName() }}">
         @yield('content')
     </main>
 
@@ -96,8 +121,12 @@
                     <a href="{{ route('programs.index', absolute: false) }}">Program</a>
                     <a href="{{ route('contact', absolute: false) }}">Kontak</a>
                 </nav>
+                <p class="footer-music-credit">
+                    <a href="https://pixabay.com/id/music/dunia-musik-degung-sunda-free-for-use-434888/">Musik Degung Sunda</a> oleh fiikuri via Pixabay
+                </p>
             </div>
         </div>
     </footer>
+    <audio data-site-music src="{{ route('site.music', absolute: false) }}" preload="none" loop></audio>
 </body>
 </html>

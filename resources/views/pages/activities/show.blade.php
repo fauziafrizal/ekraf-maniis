@@ -1,29 +1,39 @@
 @extends('layouts.public')
 
 @section('content')
-    <x-page-heading :title="$activity->title" :description="$activity->summary" eyebrow="Kegiatan">
-        <time datetime="{{ $activity->event_date->toDateString() }}" class="font-semibold text-[#365a4b]">{{ $activity->event_date->translatedFormat('j F Y') }}</time>
-    </x-page-heading>
+    <article>
+        <header class="activity-detail-hero">
+            <div class="site-shell">
+                <a class="detail-return" href="{{ route('activities.index') }}">Kembali ke daftar kegiatan</a>
+                <div class="activity-detail-masthead">
+                    <div>
+                        <p class="detail-kicker">Kegiatan</p>
+                        <h1 class="detail-title">{{ $activity->title }}</h1>
+                        <p class="detail-lead">{{ $activity->summary }}</p>
+                    </div>
+                    <time class="activity-detail-date" datetime="{{ $activity->event_date->toDateString() }}">{{ $activity->event_date->translatedFormat('j F Y') }}</time>
+                </div>
+            </div>
+        </header>
 
-    <div class="site-shell py-12 sm:py-16 lg:py-20">
-        <article class="max-w-4xl">
-            <a class="inline-flex font-semibold text-pine underline underline-offset-4" href="{{ route('activities.index') }}">Kembali ke daftar kegiatan</a>
-
+        <div class="site-shell activity-detail-content">
             @if (isset($activityCovers[$activity->id]))
-                <x-public-photo :photo="$activityCovers[$activity->id]" class="mt-7 overflow-hidden rounded-2xl border border-[#dfe4d8] bg-white" image-class="aspect-[16/9] w-full object-cover" />
+                <x-public-photo :photo="$activityCovers[$activity->id]" :priority="true" class="activity-detail-cover" image-class="activity-detail-cover-image" />
             @endif
-            <x-content-paragraphs :text="$activity->body" class="mt-7 max-w-3xl" />
-        </article>
+            <x-content-paragraphs :text="$activity->body" class="detail-body activity-detail-story" data-reveal />
+        </div>
 
         @if ($photos->isNotEmpty())
-            <section class="mt-12 border-t border-[#dfe4d8] pt-10 sm:mt-16 sm:pt-12" aria-labelledby="documentation-title">
-                <h2 id="documentation-title" class="section-title">Foto dokumentasi</h2>
-                <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                    @foreach ($photos as $photo)
-                        <x-public-photo :photo="$photoAssets[$photo->id]" :caption="$photo->caption" class="overflow-hidden rounded-2xl border border-[#dfe4d8] bg-white" />
-                    @endforeach
+            <section class="activity-detail-gallery" aria-labelledby="documentation-title">
+                <div class="site-shell">
+                    <h2 id="documentation-title" class="section-title" data-reveal>Foto dokumentasi</h2>
+                    <div class="activity-detail-gallery-grid">
+                        @foreach ($photos as $photo)
+                            <x-public-photo :photo="$photoAssets[$photo->id]" :caption="$photo->caption" data-reveal />
+                        @endforeach
+                    </div>
                 </div>
             </section>
         @endif
-    </div>
+    </article>
 @endsection

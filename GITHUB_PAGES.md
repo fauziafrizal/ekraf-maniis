@@ -1,28 +1,26 @@
-# Website Ekraf Maniis di GitHub Pages (gratis)
+# Publikasi Ekraf Maniis di GitHub Pages
 
-Konfigurasi ini membuat **versi statis** website Laravel yang sudah ada. Laravel dijalankan saat GitHub Actions membangun halaman, lalu HTML, CSS, JavaScript, logo, dan foto dipublikasikan melalui GitHub Pages.
+GitHub Actions menjalankan Laravel dengan basis data SQLite sementara, membangun aset Vite, lalu mengekspor halaman yang dapat diakses publik. GitHub Pages menyajikan hasilnya sebagai situs statis. [Buka situs Ekraf Maniis](https://fauziafrizal.github.io/ekraf-maniis/)
 
-- URL tujuan: https://fauziafrizal.github.io/ekraf-maniis/
-- Laravel asli tetap tersedia di repository.
-- Halaman: Beranda, Profil, Potensi Maniis, Subsektor, Program, Kegiatan, Kontak.
-- Formulir Kontak menggunakan JavaScript untuk membuka WhatsApp admin; tidak perlu backend.
-- Konten yang hanya ada di SQLite lokal MacBook **tidak ikut terbit**. Hanya konten yang ada di kode/seeder repository dan berstatus terbit yang muncul.
-- Untuk menambah aktivitas/anggota/subsektor yang tersimpan dalam database, data harus ditambahkan ke seed/kode repository dengan persetujuan publikasi (jangan upload seluruh database lokal).
+## Terbitkan pembaruan
 
-## Cara mengaktifkan
+1. Simpan perubahan tampilan, konfigurasi, aset, dan materi yang telah disetujui ke repository.
+2. Pada **Settings → Pages**, pilih **GitHub Actions** sebagai sumber publikasi jika pengaturan ini belum aktif.
+3. Gabungkan perubahan ke `main`. Workflow **Publish Ekraf Maniis to GitHub Pages** berjalan saat ada perubahan di branch itu. Untuk membangun ulang secara manual, buka **Actions**, pilih workflow tersebut, lalu pilih **Run workflow** dengan branch `main`.
+4. Setelah publikasi berhasil, buka situs dan periksa navigasi, foto, serta pemutar musik. [Buka situs Ekraf Maniis](https://fauziafrizal.github.io/ekraf-maniis/)
 
-1. Gabungkan pull request penyiapan GitHub Pages ke `main`.
-2. Buka repository GitHub -> **Settings** -> **Pages**.
-3. Pada **Build and deployment** -> **Source**, pilih **GitHub Actions**.
-4. Buka tab **Actions**, lalu lihat workflow `Publish Ekraf Maniis to GitHub Pages`. Jika perlu, klik **Run workflow** (branch `main`).
-5. Jika statusnya hijau (success), buka https://fauziafrizal.github.io/ekraf-maniis/ .
+## Perbarui konten
 
-Jika tidak muncul pilihan GitHub Actions, pastikan Actions diizinkan untuk repository.
+Ikuti [README](README.md) untuk menyiapkan data dan aset. Workflow menjalankan seeder yang disimpan di repository, termasuk `GitHubPagesProfileSeeder` untuk foto pimpinan dan `GitHubPagesGallerySeeder` untuk galeri yang disetujui. Untuk menayangkan perubahan basis data lokal, tambahkan materi yang telah disetujui ke seeder publikasi dan bangun ulang situs. Program, kegiatan, dan foto mengikuti waktu terbit pada saat workflow dijalankan.
 
-## Batasan
+Formulir kolaborasi menggunakan JavaScript untuk membuka WhatsApp. Perubahan di basis data Laravel perlu dimasukkan ke sumber publikasi sebelum hasilnya bisa tampil di GitHub Pages.
 
-GitHub Pages tidak menjalankan PHP, MySQL, SQLite, maupun penyimpanan upload dinamis. Perubahan data dari halaman admin Laravel tidak otomatis muncul di publikasi statis. Untuk memperbarui website, simpan perubahan konten dalam repository dan jalankan workflow lagi.
+## Tinjau hasil ekspor
 
-Script hanya menyalin folder publik `images` dan `build`, lalu mengekspor halaman HTML, tanpa menyalin `.env`/database/vendor/konfigurasi PHP.
+Siapkan Laravel sesuai README. Gunakan basis data uji yang sudah diisi dengan seeder publikasi, jalankan `npm run build`, lalu biarkan server Laravel berjalan di port 8000. Dari terminal lain, jalankan perintah berikut dari root proyek.
 
-Jika ada error di Actions, kirim **bagian log error tanpa token/rahasia** agar bisa diperbaiki.
+```sh
+python3 scripts/export_github_pages.py --output _site
+```
+
+Folder `_site` berisi halaman HTML, sitemap, aset Vite, foto publik, dan `musik-latar.mp3` yang diambil dari rute audio Laravel. URL lokal dan aset CSS menggunakan prefiks proyek `/ekraf-maniis`. Berkas `.env`, basis data, dependensi Composer, dan sumber PHP tetap di luar hasil ekspor.

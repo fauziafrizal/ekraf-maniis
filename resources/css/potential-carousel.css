@@ -19,6 +19,30 @@
         display: none;
     }
 
+    .card-carousel-guide {
+        display: grid;
+        gap: .3rem;
+    }
+
+    .card-carousel-position {
+        position: relative;
+        inline-size: min(100%, 4.75rem);
+        block-size: .24rem;
+        overflow: hidden;
+        border-radius: 1rem;
+        background: var(--color-line);
+    }
+
+    .card-carousel-position::after {
+        position: absolute;
+        inset-block: 0;
+        inset-inline-start: var(--card-position-offset, 0%);
+        inline-size: var(--card-position-width, 50%);
+        border-radius: inherit;
+        background: var(--color-pine);
+        content: '';
+    }
+
     .card-carousel-buttons {
         display: flex;
         flex-wrap: wrap;

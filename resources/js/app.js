@@ -1,3 +1,6 @@
+import './site-motion.js';
+import './site-settings.js';
+
 const collaborationForm = document.querySelector('[data-collaboration-form]');
 
 if (collaborationForm) {
@@ -73,9 +76,43 @@ if (mobileMenu) {
     });
 }
 
+const galleryDialog = document.querySelector('[data-gallery-dialog]');
+
+if (galleryDialog?.showModal) {
+    const galleryImage = galleryDialog.querySelector('[data-gallery-image]');
+    const closeGallery = galleryDialog.querySelector('[data-gallery-close]');
+    let activePhoto;
+
+    document.querySelectorAll('[data-gallery-preview]').forEach((link) => {
+        link.addEventListener('click', (event) => {
+            if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+                return;
+            }
+
+            event.preventDefault();
+            activePhoto = link;
+            galleryImage.alt = link.querySelector('img').alt;
+            galleryImage.src = link.href;
+            galleryDialog.showModal();
+        });
+    });
+
+    closeGallery.addEventListener('click', () => galleryDialog.close());
+    galleryDialog.addEventListener('click', (event) => {
+        if (event.target === galleryDialog) {
+            galleryDialog.close();
+        }
+    });
+    galleryDialog.addEventListener('close', () => {
+        galleryImage.removeAttribute('src');
+        activePhoto?.focus({ preventScroll: true });
+    });
+}
+
 document.querySelectorAll('[data-card-carousel]').forEach((carousel) => {
     const track = carousel.querySelector('[data-card-track]');
     const controls = carousel.querySelector('[data-card-controls]');
+    const indicator = carousel.querySelector('[data-card-position]');
     const previous = carousel.querySelector('[data-card-prev]');
     const next = carousel.querySelector('[data-card-next]');
 
@@ -93,7 +130,8 @@ document.querySelectorAll('[data-card-carousel]').forEach((carousel) => {
     const maxScroll = () => Math.max(0, track.scrollWidth - track.clientWidth);
 
     function updateControls() {
-        const max = maxScroll();
+        const viewport = track.clientWidth;
+        const max = Math.max(0, track.scrollWidth - viewport);
         const position = track.scrollLeft;
         const overflows = max > edgeTolerance;
 
@@ -102,6 +140,15 @@ document.querySelectorAll('[data-card-carousel]').forEach((carousel) => {
         previous.disabled = position <= edgeTolerance;
         next.disabled = position >= max - edgeTolerance;
         track.toggleAttribute('data-card-overflow', overflows);
+
+        if (indicator && overflows) {
+            const progress = Math.max(0, Math.min(1, position / max));
+            const thumb = Math.max(.2, viewport / (viewport + max));
+
+            indicator.style.setProperty('--card-position-width', `${thumb * 100}%`);
+            indicator.style.setProperty('--card-position-offset', `${progress * (1 - thumb) * 100}%`);
+            indicator.setAttribute('aria-valuenow', Math.round(progress * 100));
+        }
     }
 
     function step(direction) {

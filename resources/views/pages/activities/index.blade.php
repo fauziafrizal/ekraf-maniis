@@ -1,34 +1,56 @@
 @extends('layouts.public')
 
 @section('content')
-    <x-page-heading title="Kegiatan" :description="'Dokumentasi kegiatan dan karya yang telah dipublikasikan oleh '.$site['short_name'].'.'">
+    <x-page-heading
+        class="section-masthead section-masthead--activities"
+        title="Kegiatan"
+        :description="'Dokumentasi kegiatan dan karya yang telah dipublikasikan oleh '.$site['short_name'].'.'"
+    >
         <a class="button-primary" href="#galeri">Lihat Galeri</a>
     </x-page-heading>
 
-    <div class="site-shell py-12 sm:py-16 lg:py-20">
-        <section aria-label="Daftar kegiatan">
-            @if ($activities->isEmpty())
-                <x-empty-state>Dokumentasi kegiatan akan ditambahkan di sini.</x-empty-state>
-            @else
-                <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                    @foreach ($activities as $activity)
-                        <x-activity-card :activity="$activity" :cover="$activityCovers[$activity->id] ?? null" />
-                    @endforeach
-                </div>
-            @endif
-        </section>
+    @php($galleryOnly = $activities->isEmpty() && $photos->isNotEmpty())
 
-        <section id="galeri" class="mt-12 scroll-mt-20 border-t border-[#dfe4d8] pt-10 sm:mt-16 sm:pt-12" aria-labelledby="gallery-title">
-            <h2 id="gallery-title" class="section-title">Galeri</h2>
+    <div @class(['site-shell section-body activity-layout', 'activity-layout--gallery-only' => $galleryOnly])>
+        @unless ($galleryOnly)
+            <section aria-labelledby="activity-list-title">
+                <h2 id="activity-list-title" class="section-title activity-section-title">Dokumentasi kegiatan</h2>
+                @if ($activities->isEmpty())
+                    <p class="activity-empty" data-reveal>Dokumentasi kegiatan akan ditambahkan di sini.</p>
+                @else
+                    <div class="activity-journal">
+                        @foreach ($activities as $activity)
+                            <div class="activity-journal-entry" data-reveal>
+                                <x-activity-card :activity="$activity" :cover="$activityCovers[$activity->id] ?? null" heading="h3" />
+                            </div>
+                        @endforeach
+                    </div>
+                @endif
+            </section>
+        @endunless
+
+        <section id="galeri" class="activity-gallery" aria-labelledby="gallery-title">
+            <h2 id="gallery-title" class="section-title activity-section-title">Galeri</h2>
             @if ($photos->isEmpty())
-                <x-empty-state class="mt-6">Foto kegiatan akan ditambahkan setelah siap dipublikasikan.</x-empty-state>
+                <p class="activity-empty" data-reveal>Foto kegiatan akan ditambahkan setelah siap dipublikasikan.</p>
             @else
-                <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                <div class="activity-gallery-grid">
                     @foreach ($photos as $photo)
-                        <x-public-photo :photo="$photoAssets[$photo->id]" :caption="$photo->caption" class="overflow-hidden rounded-2xl border border-[#dfe4d8] bg-white" />
+                        @php($asset = $photoAssets[$photo->id])
+                        <x-public-photo :photo="$asset" :caption="$photo->caption"
+                            :preview="true" credit-prefix="Sumber foto ·"
+                            class="activity-gallery-photo"
+                            :image-class="\Illuminate\Support\Arr::toCssClasses([
+                                'activity-gallery-image',
+                                'activity-gallery-image--wide' => $asset['width'] / $asset['height'] >= 1.7,
+                            ])" data-reveal />
                     @endforeach
                 </div>
             @endif
         </section>
     </div>
+
+    @if ($photos->isNotEmpty())
+        <x-gallery-preview-dialog />
+    @endif
 @endsection

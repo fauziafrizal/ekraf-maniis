@@ -3,6 +3,8 @@
 @import 'tailwindcss';
 @import './editorial.css';
 @import './potential-carousel.css';
+@import './site-experience.css';
+@import './site-settings.css';
 
 @theme {
     --font-sans: 'DM Sans Variable', ui-sans-serif, system-ui, sans-serif;

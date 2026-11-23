@@ -10,6 +10,7 @@ use App\Models\Subsector;
 use App\Support\PublicSite;
 use Illuminate\Http\Response;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
 use Illuminate\View\View;
 
 class PublicSiteController extends Controller
@@ -17,16 +18,32 @@ class PublicSiteController extends Controller
     public function home(): View
     {
         $site = config('ekraf');
-        $hero = $site['assets']['hero'];
-        $heroImage = PublicSite::image($hero['image'], $hero['alt'], $hero['credit'], $hero['location']);
+        $heroDetails = $site['assets']['hero'];
+        $heroImage = $this->regionalPhoto($heroDetails);
+
+        if ($heroImage === null) {
+            $heroDetails = $site['assets']['hero_reference'] ?? [];
+            $heroImage = $this->regionalPhoto($heroDetails);
+        }
+
         $activities = Activity::recentlyPublished()->limit(3)->get();
+        $galleryHighlights = GalleryPhoto::publiclyVisible()->inDisplayOrder()->lazy(24)
+            ->map(fn (GalleryPhoto $photo) => [
+                'image' => $this->galleryImage($photo),
+                'caption' => $photo->caption,
+            ])
+            ->filter(fn (array $highlight) => $highlight['image'] !== null)
+            ->take(3)
+            ->collect();
 
         return $this->page('home', 'Beranda', $site['intro'], [
             'heroImage' => $heroImage,
+            'heroPhotoDetails' => $heroDetails,
             'potentials' => $this->potentials(),
             'programs' => Program::recentlyPublished()->limit(3)->get(),
             'activities' => $activities,
             'activityCovers' => $this->activityCovers($activities),
+            'galleryHighlights' => $galleryHighlights,
             'metaImage' => $heroImage,
         ]);
     }
@@ -34,11 +51,25 @@ class PublicSiteController extends Controller
     public function profile(): View
     {
         $members = BoardMember::published()->inDisplayOrder()->get();
-        $chair = $members->first(fn (BoardMember $member) => mb_strtolower(trim($member->position)) === 'ketua');
+        $membersByRole = $members->groupBy(function (BoardMember $member): string {
+            $role = Str::slug($member->position);
+
+            return $role === 'sekertaris' ? 'sekretaris' : $role;
+        });
+        $leadership = collect([
+            'ketua' => 'Ketua',
+            'wakil-ketua' => 'Wakil Ketua',
+            'sekretaris' => 'Sekretaris',
+        ])->map(fn (string $position, string $role) => [
+            'position' => $position,
+            'member' => $membersByRole->get($role)?->first(),
+        ]);
+        $featuredIds = $leadership->pluck('member.id')->filter();
 
         return $this->page('profile', 'Profil', 'Kenali organisasi dan struktur pengurus '.config('ekraf.short_name').' periode '.config('ekraf.period').'.', [
-            'members' => $members,
-            'chair' => $chair,
+            'leadership' => $leadership,
+            'hasPublishedLeaders' => $featuredIds->isNotEmpty(),
+            'otherMembers' => $members->reject(fn (BoardMember $member) => $featuredIds->containsStrict($member->id)),
             'memberPhotos' => $members->mapWithKeys(fn (BoardMember $member) => [
                 $member->id => PublicSite::image($member->photo_path, 'Foto '.$member->name),
             ]),
@@ -144,12 +175,19 @@ class PublicSiteController extends Controller
     private function potentials(): array
     {
         return array_map(function (array $potential) {
-            $potential['photo'] = filled($potential['location'])
-                ? PublicSite::photo($potential['image'], $potential['alt'], $potential['credit'], $potential['location'])
-                : null;
+            $potential['photo'] = $this->regionalPhoto($potential);
 
             return $potential;
         }, config('ekraf.potential'));
+    }
+
+    private function regionalPhoto(array $details): ?array
+    {
+        $location = $details['location'] ?? null;
+
+        return filled($location)
+            ? PublicSite::photo($details['image'] ?? null, $details['alt'] ?? null, $details['credit'] ?? null, $location)
+            : null;
     }
 
     private function activityCovers(Collection $activities): Collection
@@ -162,7 +200,12 @@ class PublicSiteController extends Controller
     private function galleryImages(Collection $photos): Collection
     {
         return $photos->mapWithKeys(fn (GalleryPhoto $photo) => [
-            $photo->id => PublicSite::photo($photo->image_path, $photo->alt_text, $photo->credit),
+            $photo->id => $this->galleryImage($photo),
         ])->filter();
+    }
+
+    private function galleryImage(GalleryPhoto $photo): ?array
+    {
+        return PublicSite::photo($photo->image_path, $photo->alt_text, $photo->credit);
     }
 }

@@ -7,7 +7,7 @@ use Illuminate\Database\Seeder;
 use RuntimeException;
 
 /**
- * Publish only the three approved leadership portraits for the static Pages
+ * Prepare the approved leadership portraits and gallery for the static Pages
  * export. Keep the normal Laravel database seeder's unpublished default.
  */
 class GitHubPagesProfileSeeder extends Seeder
@@ -34,5 +34,7 @@ class GitHubPagesProfileSeeder extends Seeder
             $member->published_at = now()->subMinute();
             $member->save();
         }
+
+        $this->call(GitHubPagesGallerySeeder::class);
     }
 }

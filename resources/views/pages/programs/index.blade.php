@@ -1,15 +1,24 @@
 @extends('layouts.public')
 
 @section('content')
-    <x-page-heading title="Program" :description="'Lihat sasaran dan perkembangan program '.$site['short_name'].' untuk warga, pelaku usaha, sekolah, dan komunitas.'" />
+    <x-page-heading
+        class="section-masthead section-masthead--programs"
+        title="Program"
+        :description="'Lihat sasaran dan perkembangan program '.$site['short_name'].' untuk warga, pelaku usaha, sekolah, dan komunitas.'"
+    />
 
-    <section class="site-shell py-12 sm:py-16 lg:py-20" aria-label="Daftar program">
+    <section class="site-shell section-body" aria-label="Daftar program">
         @if ($programs->isEmpty())
-            <x-empty-state>Informasi program akan ditambahkan setelah siap dipublikasikan.</x-empty-state>
+            <div class="program-empty" data-reveal>
+                <p>Informasi program akan ditambahkan setelah siap dipublikasikan.</p>
+                <a class="editorial-link" href="{{ route('contact') }}">Kontak pengurus</a>
+            </div>
         @else
-            <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <div class="program-index">
                 @foreach ($programs as $program)
-                    <x-program-card :program="$program" />
+                    <div @class(['program-entry', 'program-entry--featured' => $loop->first]) data-reveal>
+                        <x-program-card :program="$program" />
+                    </div>
                 @endforeach
             </div>
         @endif

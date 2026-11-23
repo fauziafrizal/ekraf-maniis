@@ -42,6 +42,16 @@ return [
         ],
     ],
     'assets' => [
+        'hero_reference' => [
+            'image' => 'images/waduk-cirata-senja.jpg',
+            'alt' => 'Siluet perbukitan dan langit senja di atas permukaan Waduk Cirata.',
+            'credit' => 'Annisa 48',
+            'location' => 'Waduk Cirata, Jawa Barat',
+            'source_url' => 'https://commons.wikimedia.org/wiki/File:Sunset_di_Waduk_Cirata,_Jawa_Barat.jpg',
+            'license' => 'CC BY-SA 4.0',
+            'license_url' => 'https://creativecommons.org/licenses/by-sa/4.0/',
+            'changes' => 'Ukuran dan bingkai tampilan disesuaikan.',
+        ],
         'logo' => 'images/logo.jpg',
         'government_logo' => null,
         'hero' => [
