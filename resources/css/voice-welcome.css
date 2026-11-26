@@ -152,9 +152,14 @@
         align-items: flex-start;
     }
     .em-voice-wave {
-        display: none;
+        display: flex;
+        gap: 2px;
     }
+    .em-voice-wave i { width: 2px; }
     .em-voice-orb {
         margin-top: 0.3rem;
     }
 }
+
+[data-welcome-loading] .em-voice-orb { outline: 1px dashed #e4c58e; outline-offset: 4px; }
+[data-welcome-loading] .em-voice-status { color: inherit; }

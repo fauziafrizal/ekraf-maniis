@@ -56,6 +56,7 @@ if (music && musicToggle && musicStatus) {
     music.volume = 0.2;
 
     function playMusic(autoplay = false) {
+        if (document.querySelector('[data-welcome-active]')) return;
         musicStatus.textContent = '';
         music.play().catch((error) => {
             if (autoplay && error.name === 'NotAllowedError') {
@@ -71,7 +72,13 @@ if (music && musicToggle && musicStatus) {
         playMusic();
     }
 
-    music.addEventListener('playing', () => musicToggle.setAttribute('aria-pressed', 'true'));
+    music.addEventListener('playing', () => {
+        if (document.querySelector('[data-welcome-active]')) {
+            music.pause();
+            return;
+        }
+        musicToggle.setAttribute('aria-pressed', 'true');
+    });
     music.addEventListener('pause', () => musicToggle.setAttribute('aria-pressed', 'false'));
 
     musicToggle.addEventListener('click', () => {

@@ -12,7 +12,7 @@
             @php($narration = config('ekraf.welcome_narration'))
             @php($audioFile = is_file(public_path('audio/sapa-ekraf-welcome.mp3')) ? 'audio/sapa-ekraf-welcome.mp3' : (is_file(public_path('audio/sapa-ekraf-welcome.m4a')) ? 'audio/sapa-ekraf-welcome.m4a' : null))
             @if ($audioFile)
-                <audio data-welcome-audio preload="none" src="{{ asset($audioFile) }}" hidden
+                <audio data-welcome-audio preload="metadata" playsinline src="{{ asset($audioFile) }}" hidden
                     aria-label="Sambutan suara AI"></audio>
             @endif
             <div class="em-voice-actions" data-welcome-controls>
