@@ -30,6 +30,7 @@ if (preferences && themeToggle) {
     function applyTheme() {
         const theme = selectedTheme ?? (preferredScheme.matches ? 'dark' : 'light');
         root.dataset.theme = theme;
+        root.style.colorScheme = theme;
         themeToggle.setAttribute('aria-pressed', String(theme === 'dark'));
 
         if (themeColor) {
@@ -45,12 +46,13 @@ if (preferences && themeToggle) {
 
     preferredScheme.addEventListener('change', applyTheme);
     applyTheme();
-    preferences.hidden = false;
+    themeToggle.disabled = false;
     root.classList.add('has-site-preferences');
 }
 
 if (music && musicToggle && musicStatus) {
     const musicPreference = 'ekraf-music';
+    musicToggle.disabled = false;
     music.volume = 0.2;
 
     function playMusic(autoplay = false) {
@@ -64,7 +66,8 @@ if (music && musicToggle && musicStatus) {
         });
     }
 
-    function playAfterInteraction() {
+    function playAfterInteraction(event) {
+        if (event?.target?.closest('[data-voice-welcome]')) return;
         playMusic();
     }
 

@@ -9,4 +9,5 @@
     };
 @endphp
 
-<span {{ $attributes->class(['inline-flex w-fit rounded-full px-3 py-1 text-sm font-semibold', $colors]) }}>{{ $status->label() }}</span>
+<span
+    {{ $attributes->class(['inline-flex w-fit rounded-full px-3 py-1 text-sm font-semibold', $colors]) }}>{{ $status->label() }}</span>

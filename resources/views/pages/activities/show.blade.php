@@ -11,14 +11,16 @@
                         <h1 class="detail-title">{{ $activity->title }}</h1>
                         <p class="detail-lead">{{ $activity->summary }}</p>
                     </div>
-                    <time class="activity-detail-date" datetime="{{ $activity->event_date->toDateString() }}">{{ $activity->event_date->translatedFormat('j F Y') }}</time>
+                    <time class="activity-detail-date"
+                        datetime="{{ $activity->event_date->toDateString() }}">{{ $activity->event_date->translatedFormat('j F Y') }}</time>
                 </div>
             </div>
         </header>
 
         <div class="site-shell activity-detail-content">
             @if (isset($activityCovers[$activity->id]))
-                <x-public-photo :photo="$activityCovers[$activity->id]" :priority="true" class="activity-detail-cover" image-class="activity-detail-cover-image" />
+                <x-public-photo :photo="$activityCovers[$activity->id]" :priority="true" class="activity-detail-cover"
+                    image-class="activity-detail-cover-image" />
             @endif
             <x-content-paragraphs :text="$activity->body" class="detail-body activity-detail-story" data-reveal />
         </div>

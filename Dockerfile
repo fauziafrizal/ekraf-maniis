@@ -11,8 +11,9 @@ FROM php:8.4-apache-bookworm
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
-       libicu-dev libonig-dev libpq-dev libsqlite3-dev libzip-dev unzip git \
-    && docker-php-ext-install -j"$(nproc)" intl mbstring opcache pdo_mysql pdo_pgsql pdo_sqlite zip \
+       libicu-dev libonig-dev libpq-dev libsqlite3-dev libzip-dev libpng-dev libjpeg62-turbo-dev unzip git \
+    && docker-php-ext-configure gd --with-jpeg \
+    && docker-php-ext-install -j"$(nproc)" intl mbstring opcache pdo_mysql pdo_pgsql pdo_sqlite zip gd \
     && rm -rf /var/lib/apt/lists/* \
     && a2enmod rewrite headers \
     && sed -ri 's!/var/www/html!/var/www/html/public!g' /etc/apache2/sites-available/000-default.conf \

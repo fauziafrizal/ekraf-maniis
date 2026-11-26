@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'welcome_narration' => 'Sampurasun! Selamat datang di website Ekraf Maniis. Saya Sapa Ekraf, pemandu virtual yang akan menemani perjalanan kreatif Anda. Di sini, kita bisa mengenal potensi Maniis, mulai dari indahnya Waduk Cirata, karya masyarakat, hingga beragam peluang usaha. Ingin memperkenalkan produk lokal, belajar mengembangkan usaha, atau menemukan kegiatan dan peluang kolaborasi? Jelajahi Creative Hub, Ekraf Academy, marketplace, dan pusat layanan kami. Anda juga bisa bertanya kepada saya melalui menu Tanya Ekraf. Mari bersama-sama mengembangkan potensi daerah dan membuka peluang baru. Ekraf Maniis, tumbuh dari kolaborasi. Selamat menjelajahi!',
     'name' => 'Koordinator Ekraf Kecamatan Maniis',
     'short_name' => 'Ekraf Maniis',
     'period' => '2026–2031',
@@ -70,4 +71,5 @@ return [
         'youtube' => null,
     ],
     'public_url' => env('EKRAF_PUBLIC_URL'),
+    'static_preview' => env('EKRAF_STATIC_PREVIEW', false),
 ];

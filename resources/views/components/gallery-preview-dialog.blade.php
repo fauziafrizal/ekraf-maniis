@@ -3,5 +3,5 @@
         <h2 id="gallery-dialog-title">Foto kegiatan</h2>
         <button type="button" class="activity-gallery-close" data-gallery-close autofocus>Tutup</button>
     </div>
-    <img data-gallery-image alt="">
+    <img draggable="false" data-gallery-image alt="">
 </dialog>

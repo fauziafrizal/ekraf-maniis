@@ -61,8 +61,8 @@
     .editorial-place {
         display: flex;
         align-items: center;
-        gap: .65rem;
-        font-size: .875rem;
+        gap: 0.65rem;
+        font-size: 0.875rem;
         font-weight: 700;
         line-height: 1.45;
     }
@@ -77,12 +77,12 @@
 
     .editorial-hero h1 {
         max-width: 16ch;
-        margin-block: .65rem 1.05rem;
+        margin-block: 0.65rem 1.05rem;
         font-family: var(--font-display);
         font-size: clamp(3.25rem, 6.45vw, 6.35rem);
         font-weight: 400;
-        letter-spacing: -.055em;
-        line-height: .94;
+        letter-spacing: -0.055em;
+        line-height: 0.94;
         overflow-wrap: anywhere;
         text-wrap: balance;
     }
@@ -90,7 +90,7 @@
     .editorial-slogan {
         font-size: clamp(1.35rem, 3vw, 2.25rem);
         font-weight: 620;
-        letter-spacing: -.036em;
+        letter-spacing: -0.036em;
         line-height: 1.15;
     }
 
@@ -99,7 +99,7 @@
     }
 
     .editorial-identity {
-        margin-top: .9rem;
+        margin-top: 0.9rem;
         color: var(--hero-muted);
     }
 
@@ -111,7 +111,7 @@
     .editorial-actions {
         display: flex;
         flex-wrap: wrap;
-        gap: .7rem;
+        gap: 0.7rem;
         margin-top: 1.4rem;
     }
 
@@ -128,11 +128,11 @@
     .editorial-hero-credit {
         display: flex;
         flex-wrap: wrap;
-        gap: .25rem .95rem;
+        gap: 0.25rem 0.95rem;
         min-width: 0;
-        padding-top: .65rem;
+        padding-top: 0.65rem;
         color: var(--color-muted);
-        font-size: .875rem;
+        font-size: 0.875rem;
         line-height: 1.45;
         overflow-wrap: anywhere;
     }
@@ -146,13 +146,13 @@
         color: var(--color-pine);
         text-decoration: underline;
         text-decoration-color: #a2946b;
-        text-underline-offset: .19em;
+        text-underline-offset: 0.19em;
     }
 
     @media (min-width: 48rem) {
         .editorial-hero-stage--photo {
             min-height: clamp(30rem, 41vw, 36rem);
-            grid-template-columns: minmax(0, .88fr) minmax(0, 1.12fr);
+            grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
         }
 
         .editorial-hero-media {
@@ -185,12 +185,12 @@
     .editorial-link {
         display: inline-flex;
         width: fit-content;
-        margin-top: .8rem;
+        margin-top: 0.8rem;
         color: var(--color-pine);
         font-weight: 700;
         text-decoration: underline;
         text-decoration-color: #9b8958;
-        text-underline-offset: .27em;
+        text-underline-offset: 0.27em;
     }
 
     .editorial-link:hover {
@@ -211,7 +211,7 @@
         flex-wrap: wrap;
         align-items: baseline;
         justify-content: space-between;
-        gap: .8rem 1.5rem;
+        gap: 0.8rem 1.5rem;
         margin-bottom: 1.25rem;
     }
 
@@ -226,8 +226,8 @@
         overflow: hidden;
         min-height: 16rem;
         border: 1px solid #c7c4b2;
-        border-top: .25rem solid #527867;
-        border-radius: .7rem;
+        border-top: 0.25rem solid #527867;
+        border-radius: 0.7rem;
         background: #fffdf7;
     }
 
@@ -245,7 +245,7 @@
         grid-template-rows: auto 1fr auto;
         justify-items: start;
         align-content: start;
-        gap: .75rem;
+        gap: 0.75rem;
         padding: clamp(1.25rem, 2.6vw, 2rem);
     }
 
@@ -254,7 +254,7 @@
         font-family: var(--font-display);
         font-size: clamp(1.7rem, 2.6vw, 2.35rem);
         font-weight: 400;
-        letter-spacing: -.028em;
+        letter-spacing: -0.028em;
         line-height: 1.08;
         overflow-wrap: anywhere;
     }
@@ -283,7 +283,7 @@
     }
 
     .potential-card-arrow::before {
-        width: .86rem;
+        width: 0.86rem;
         height: 1px;
         background: currentColor;
         content: '';
@@ -291,11 +291,11 @@
 
     .potential-card-arrow::after {
         position: absolute;
-        width: .47rem;
-        height: .47rem;
+        width: 0.47rem;
+        height: 0.47rem;
         border-block-start: 1px solid currentColor;
         border-inline-end: 1px solid currentColor;
-        transform: translateX(.17rem) rotate(45deg);
+        transform: translateX(0.17rem) rotate(45deg);
         content: '';
     }
 
@@ -323,7 +323,7 @@
     .editorial-page-heading .eyebrow {
         display: flex;
         align-items: center;
-        gap: .65rem;
+        gap: 0.65rem;
     }
 
     .editorial-page-heading .eyebrow::before {
@@ -356,11 +356,11 @@
 
     .profile-period-years {
         display: block;
-        margin-top: .4rem;
+        margin-top: 0.4rem;
         font-family: var(--font-display);
         font-size: clamp(2.55rem, 4.55vw, 4.6rem);
         font-weight: 400;
-        letter-spacing: -.05em;
+        letter-spacing: -0.05em;
         line-height: 1;
         overflow-wrap: anywhere;
     }
@@ -389,12 +389,12 @@
     }
 
     .leadership-heading h2 {
-        margin-top: .4rem;
+        margin-top: 0.4rem;
     }
 
     .leadership-note {
         max-width: 60ch;
-        margin-top: .7rem;
+        margin-top: 0.7rem;
         color: var(--leadership-muted);
         overflow-wrap: anywhere;
     }
@@ -403,7 +403,7 @@
     .leadership-other-grid {
         display: grid;
         grid-template-columns: minmax(0, 1fr);
-        gap: clamp(.85rem, 2vw, 1.45rem);
+        gap: clamp(0.85rem, 2vw, 1.45rem);
     }
 
     .leadership-card,
@@ -413,7 +413,7 @@
         min-width: 0;
         overflow: hidden;
         border: 1px solid #d5cdb9;
-        border-radius: .2rem;
+        border-radius: 0.2rem;
         background: #fffdf7;
         color: var(--leadership-text);
     }
@@ -449,11 +449,11 @@
     .leadership-position {
         display: flex;
         align-items: center;
-        gap: .55rem;
+        gap: 0.55rem;
         color: var(--leadership-muted);
-        font-size: .875rem;
+        font-size: 0.875rem;
         font-weight: 720;
-        letter-spacing: .06em;
+        letter-spacing: 0.06em;
         line-height: 1.4;
         text-transform: uppercase;
     }
@@ -468,12 +468,12 @@
 
     .leadership-name,
     .leadership-pending-title {
-        margin-top: .55rem;
+        margin-top: 0.55rem;
         color: var(--leadership-text);
         font-family: var(--font-display);
         font-size: clamp(2rem, 4vw, 3.6rem);
         font-weight: 400;
-        letter-spacing: -.035em;
+        letter-spacing: -0.035em;
         line-height: 1.02;
         overflow-wrap: anywhere;
         text-wrap: balance;
@@ -484,21 +484,21 @@
         display: block;
         width: 1.85rem;
         height: 2px;
-        margin-bottom: .75rem;
+        margin-bottom: 0.75rem;
         background: var(--leadership-accent);
     }
 
     .leadership-card--chair .leadership-name,
     .leadership-card--chair .leadership-pending-title {
         font-size: clamp(2.7rem, 6.6vw, 5.7rem);
-        letter-spacing: -.045em;
-        line-height: .99;
+        letter-spacing: -0.045em;
+        line-height: 0.99;
     }
 
     .leadership-division,
     .leadership-pending,
     .leadership-content .leadership-bio {
-        margin-top: .75rem;
+        margin-top: 0.75rem;
         color: var(--leadership-muted);
     }
 
@@ -511,7 +511,7 @@
         min-width: 0;
         place-items: center;
         align-self: stretch;
-        padding: clamp(.75rem, 2.2vw, 1.4rem);
+        padding: clamp(0.75rem, 2.2vw, 1.4rem);
         background: #eae5d6;
     }
 
@@ -523,7 +523,7 @@
         max-height: clamp(15rem, 68vw, 21rem);
         border: 1px solid #f7f2e6;
         object-fit: contain;
-        box-shadow: 0 .5rem 1.25rem #2e39201a;
+        box-shadow: 0 0.5rem 1.25rem #2e39201a;
     }
 
     .leadership-card--chair .leadership-photo {
@@ -534,7 +534,7 @@
     .leadership-card--chair .leadership-photo img {
         max-height: clamp(17rem, 74vw, 29rem);
         border-color: #d8bf8968;
-        box-shadow: 0 .65rem 1.8rem #071b1466;
+        box-shadow: 0 0.65rem 1.8rem #071b1466;
     }
 
     .leadership-other {
@@ -561,7 +561,7 @@
 
     @media (min-width: 48rem) {
         .profile-intro-grid {
-            grid-template-columns: minmax(0, 1.27fr) minmax(0, .73fr);
+            grid-template-columns: minmax(0, 1.27fr) minmax(0, 0.73fr);
         }
 
         .leadership-grid,
@@ -570,7 +570,7 @@
         }
 
         .leadership-card--chair.leadership-card--portrait {
-            grid-template-columns: minmax(0, 1.19fr) minmax(0, .81fr);
+            grid-template-columns: minmax(0, 1.19fr) minmax(0, 0.81fr);
         }
 
         .leadership-card--chair .leadership-photo {
@@ -581,7 +581,7 @@
 
     @media (min-width: 64rem) {
         .leadership-card--portrait:not(.leadership-card--chair) {
-            grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr);
+            grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
         }
 
         .leadership-card--portrait:not(.leadership-card--chair) .leadership-photo {
@@ -596,14 +596,14 @@
     @media (min-width: 48rem) {
         .editorial-intro-grid,
         .editorial-contact-grid {
-            grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr);
+            grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
             gap: 3rem;
         }
     }
 }
 
 .home-preview-card > article {
-    border-top: .3125rem solid #849b86;
+    border-top: 0.3125rem solid #849b86;
     border-radius: 0;
     background: #fffdf7;
 }

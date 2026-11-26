@@ -1,0 +1,277 @@
+/* Component-level refinement. Shared ambient canvas, section backgrounds, and
+   theme palettes remain untouched. No entrance effects or layout animations. */
+html[data-ekraf-ambient] {
+    --em-fine-border: #91b29a65;
+    --em-fine-gold: #efca88;
+    --em-fine-shadow: 0 12px 34px #061a142b;
+}
+html[data-ekraf-ambient] main#main-content :is(.page-title, .section-title) {
+    letter-spacing: -0.035em;
+    text-wrap: balance;
+}
+html[data-ekraf-ambient] main#main-content .page-title {
+    font-size: clamp(2.45rem, 5.65vw, 4.95rem);
+    line-height: 1.06;
+}
+html[data-ekraf-ambient] main#main-content .section-title {
+    font-size: clamp(1.85rem, 3.7vw, 3.25rem);
+    line-height: 1.14;
+}
+html[data-ekraf-ambient] main#main-content .prose-copy {
+    line-height: 1.75;
+}
+html[data-ekraf-ambient] main#main-content > .editorial-page-heading > .site-shell {
+    padding-block: clamp(2.6rem, 5.6vw, 4.6rem);
+}
+html[data-ekraf-ambient] .site-header .desktop-nav .nav-link {
+    border-radius: 0.6rem;
+}
+html[data-ekraf-ambient] .site-header .desktop-nav .nav-link[aria-current='page'] {
+    box-shadow: inset 0 0 0 1px #b9cbb32e;
+}
+html[data-ekraf-ambient] .site-header .mobile-nav .nav-link {
+    padding-block: 0.8rem;
+    border-radius: 0.65rem;
+}
+html[data-ekraf-ambient] .site-header .mobile-nav .nav-link + .nav-link {
+    margin-top: 0.15rem;
+}
+html[data-ekraf-ambient] .site-header :is(.menu-toggle, .site-preference, .em-header-search) {
+    border-radius: 0.65rem;
+}
+html[data-ekraf-ambient] .site-header .site-preferences-inner {
+    gap: 0.55rem;
+}
+html[data-ekraf-ambient] main#main-content :is(.button-primary, .button-secondary) {
+    border-radius: 0.7rem;
+    gap: 0.5rem;
+    min-height: 2.95rem;
+    max-width: 100%;
+    text-align: center;
+    font-size: 0.94rem;
+    overflow-wrap: anywhere;
+    text-decoration: none;
+}
+html[data-ekraf-ambient] main#main-content .button-primary {
+    box-shadow:
+        0 3px 0 #071b152a,
+        inset 0 1px 0 #fff3d44d;
+}
+html[data-ekraf-ambient] main#main-content .button-secondary {
+    border-color: #94b29b90;
+}
+html[data-ekraf-ambient] main#main-content :is(.button-primary, .button-secondary):active {
+    box-shadow: inset 0 2px 5px #09281e25;
+}
+html[data-ekraf-ambient]
+    main#main-content
+    :is(
+        .em-service-card,
+        .em-search-item,
+        .em-agenda-item,
+        .em-hub-card,
+        .em-extra-grid a,
+        .em-faq details,
+        .profile-period,
+        .leadership-card,
+        .leadership-member,
+        .potential-card,
+        .home-gallery-card,
+        .program-entry > article,
+        .home-preview-card > article,
+        .activity-journal-entry > article > figure
+    ) {
+    border-radius: 1.15rem;
+    border-color: var(--em-fine-border);
+    box-shadow: var(--em-fine-shadow);
+    min-width: 0;
+}
+html[data-ekraf-ambient]
+    main#main-content
+    :is(.leadership-card, .leadership-member, .home-gallery-card, .potential-card) {
+    overflow: hidden;
+}
+html[data-ekraf-ambient] main#main-content .profile-period {
+    border-top: 2px solid var(--em-fine-gold);
+}
+html[data-ekraf-ambient] main#main-content .leadership-photo img {
+    border-radius: 0;
+}
+html[data-ekraf-ambient] main#main-content .leadership-name {
+    text-wrap: balance;
+}
+html[data-ekraf-ambient]
+    main#main-content
+    :is(.em-service-card h3, .em-hub-card h3, .em-search-item h3, .em-extra-grid a strong) {
+    letter-spacing: -0.015em;
+    line-height: 1.35;
+}
+html[data-ekraf-ambient] main#main-content .em-service-choice {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.55rem;
+    padding: clamp(1.2rem, 2.2vw, 1.7rem);
+}
+.em-service-card-top {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.6rem;
+}
+.em-service-icon {
+    display: grid;
+    place-items: center;
+    width: 3rem;
+    height: 3rem;
+    border: 1px solid #d6c39460;
+    color: #efca88;
+    border-radius: 0.85rem;
+}
+.em-service-icon svg {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+.em-service-number {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    color: var(--color-muted);
+}
+html[data-ekraf-ambient] main#main-content .em-service-choice p {
+    margin-top: 0;
+    margin-bottom: 0.65rem;
+    flex: 1;
+}
+html[data-ekraf-ambient] main#main-content .em-service-choice .editorial-link {
+    font-size: 0.88rem;
+    margin-top: auto;
+    padding-top: 0.55rem;
+}
+.em-section-shortcuts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+}
+.em-section-shortcuts a {
+    border: 1px solid #9bb69b70;
+    border-radius: 999px;
+    padding: 0.55rem 0.95rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #fff3dc;
+    min-height: 2.65rem;
+    display: inline-flex;
+    align-items: center;
+}
+.em-section-shortcuts a:hover {
+    border-color: #efca88;
+    color: #efca88;
+}
+html[data-ekraf-ambient] main#main-content .em-section-shortcuts + section {
+    margin-top: -1.5rem;
+}
+html[data-ekraf-ambient] main#main-content .em-faq summary {
+    font-size: 0.96rem;
+    padding-block: 0.2rem;
+}
+html[data-ekraf-ambient] main#main-content .em-faq details[open] {
+    border-color: #d5b477;
+}
+html[data-ekraf-ambient]
+    main#main-content
+    :is(.em-filter-tools, .em-admin-form, .collaboration-form)
+    :is(input:not([type='checkbox']):not([type='radio']), select, textarea) {
+    border-radius: 0.7rem;
+    min-height: 2.95rem;
+    font-size: 1rem;
+}
+html[data-ekraf-ambient] main#main-content .em-search-item > span {
+    color: #efca88;
+    letter-spacing: 0.035em;
+}
+html[data-ekraf-ambient] main#main-content .em-home-gallery-track .home-gallery-card img {
+    border-radius: 0;
+}
+html[data-ekraf-ambient] main#main-content .em-home-service-track .em-experience-card {
+    border-color: #b1c7a85c;
+}
+html[data-ekraf-ambient] main#main-content .em-drag-rail .card-carousel-tools {
+    gap: 0.6rem;
+}
+html[data-ekraf-ambient] main#main-content .em-drag-rail .card-carousel-buttons button {
+    min-height: 2.75rem;
+}
+html[data-ekraf-ambient] main#main-content .em-voice-inner {
+    border-color: var(--em-fine-border);
+}
+html[data-ekraf-ambient] main#main-content .em-voice-orb {
+    box-shadow:
+        0 0 0 5px #e8c48a18,
+        inset 0 0 0 1px #e8c48a44;
+}
+html[data-ekraf-ambient] .em-assistant-launch {
+    border-color: #d4b77c90;
+    box-shadow: 0 6px 24px #051c1550;
+}
+html[data-ekraf-ambient] .em-assistant-dialog {
+    border-radius: 1.2rem;
+    border-color: #719780;
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    html[data-ekraf-ambient]
+        main#main-content
+        :is(
+            .em-service-choice,
+            .em-hub-card,
+            .em-extra-grid a,
+            .em-discovery-link,
+            .em-audience-link,
+            .em-experience-card,
+            .home-gallery-card,
+            .potential-card
+        ) {
+        transition:
+            border-color 0.18s ease,
+            box-shadow 0.18s ease;
+    }
+    html[data-ekraf-ambient]
+        main#main-content
+        :is(
+            .em-service-choice,
+            .em-hub-card,
+            .em-extra-grid a,
+            .em-discovery-link,
+            .em-audience-link,
+            .em-experience-card,
+            .home-gallery-card,
+            .potential-card
+        ):hover {
+        border-color: #e8c48a;
+        box-shadow: 0 12px 30px #071c1545;
+        transform: none;
+    }
+    html[data-ekraf-ambient] main#main-content [data-card-dragging] > * {
+        transition: none !important;
+        transform: none !important;
+    }
+}
+@media (max-width: 47.99rem) {
+    html[data-ekraf-ambient] main#main-content .page-title {
+        font-size: clamp(2.35rem, 9vw, 3.5rem);
+    }
+    html[data-ekraf-ambient] main#main-content .section-title {
+        font-size: clamp(1.75rem, 6.6vw, 2.5rem);
+    }
+    html[data-ekraf-ambient] main#main-content .em-section-shortcuts + section {
+        margin-top: -0.85rem;
+    }
+    html[data-ekraf-ambient] main#main-content .em-drag-hint {
+        font-size: 0.77rem;
+    }
+}
+@media print {
+    html[data-ekraf-ambient] main#main-content :is(.em-service-card, .em-credential) {
+        box-shadow: none;
+    }
+}

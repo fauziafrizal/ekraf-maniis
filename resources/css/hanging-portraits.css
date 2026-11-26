@@ -1,0 +1,251 @@
+/* Photo cards swing from a fixed pin. Page canvas is never altered. */
+.em-hanging-guide {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    color: #d3e6d6;
+    font-size: 0.88rem;
+    margin: 0 0 1.3rem;
+}
+.em-hanging-guide svg {
+    width: 1.3rem;
+    height: 1.3rem;
+    color: #efca88;
+    flex: none;
+}
+html[data-ekraf-ambient] main#main-content .em-hanging-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.25rem;
+    align-items: stretch;
+}
+html[data-ekraf-ambient] main#main-content .em-hanging-grid .em-hanging-card {
+    display: flex;
+    flex-direction: column;
+    grid-column: auto;
+    min-width: 0;
+    min-height: 0;
+    align-items: stretch;
+    border: 1px solid #a6c4a63b;
+    border-radius: 1.4rem;
+    background: linear-gradient(145deg, #214c3e, #14382d);
+    overflow: hidden;
+}
+.em-hanging-stage {
+    position: relative;
+    isolation: isolate;
+    display: grid;
+    justify-items: center;
+    align-items: start;
+    height: clamp(23.5rem, 100vw, 27rem);
+    padding-top: 1.1rem;
+    overflow: hidden;
+    border-bottom: 1px solid #b2c4a42b;
+}
+.em-hanging-stage::before {
+    content: '';
+    position: absolute;
+    top: 1.35rem;
+    left: 8%;
+    right: 8%;
+    height: 1px;
+    background: #b0bc9460;
+}
+.em-hanging-pin {
+    position: absolute;
+    z-index: 4;
+    top: 1.05rem;
+    left: 50%;
+    width: 0.7rem;
+    height: 0.7rem;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    background: #efca88;
+    box-shadow:
+        0 2px 6px #071b1580,
+        inset 0 1px 1px #fff3dc;
+}
+.em-hanging-pendulum {
+    --hang-angle: 0deg;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: min(66%, 15.2rem);
+    padding: 0;
+    border: 0;
+    margin: 0;
+    color: #fff3dc;
+    background: transparent;
+    transform-origin: 50% 0.25rem;
+    transform: rotate(var(--hang-angle));
+    touch-action: pan-y;
+    cursor: default;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+.em-hanging-pendulum:disabled {
+    cursor: default;
+}
+.em-hanging-rope {
+    width: 38%;
+    height: 3.1rem;
+    display: block;
+    position: relative;
+    flex: none;
+}
+.em-hanging-rope::before,
+.em-hanging-rope::after {
+    content: '';
+    position: absolute;
+    top: 0.2rem;
+    left: 50%;
+    height: calc(100% + 0.25rem);
+    width: 1.5px;
+    background: #d5b881;
+    transform-origin: top center;
+    transform: rotate(25deg);
+}
+.em-hanging-rope::after {
+    transform: rotate(-25deg);
+}
+.em-hanging-frame {
+    position: relative;
+    isolation: isolate;
+    display: block;
+    width: 100%;
+    padding: 0.55rem 0.55rem 0;
+    border: 1px solid #bdc7a87a;
+    border-radius: 0.8rem;
+    box-shadow: 0 12px 24px #061b1580;
+    background: #d9caa7;
+}
+.em-hanging-frame::before,
+.em-hanging-frame::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border: 1px solid #d2c29d;
+    border-radius: 0.8rem;
+    background: #65816b;
+    transform: translate(5px, 5px) rotate(3deg);
+}
+.em-hanging-frame::after {
+    transform: translate(-5px, 3px) rotate(-3deg);
+    background: #a5b09a;
+}
+.em-hanging-clip {
+    position: absolute;
+    z-index: 2;
+    left: 50%;
+    top: -0.38rem;
+    width: 2rem;
+    height: 0.8rem;
+    border-radius: 0.2rem;
+    background: linear-gradient(#e8c48a, #a7834d);
+    transform: translateX(-50%);
+    box-shadow: 0 2px 4px #071b1540;
+}
+.em-hanging-image {
+    display: grid;
+    place-items: center;
+    aspect-ratio: 4/5;
+    background: #173b31;
+    overflow: hidden;
+    border-radius: 0.4rem;
+}
+.em-hanging-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+.em-hanging-tag {
+    display: block;
+    padding: 0.55rem 0.2rem 0.7rem;
+    font-weight: 750;
+    font-size: 0.76rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #19382e;
+}
+html[data-ekraf-ambient] main#main-content .em-hanging-card .leadership-content {
+    padding: 1.25rem 1.4rem 1.6rem;
+    flex: 1;
+}
+html[data-ekraf-ambient] main#main-content .em-hanging-card .leadership-name {
+    font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+    line-height: 1.14;
+    letter-spacing: -0.025em;
+}
+.em-hanging-card .leadership-position {
+    font-size: 0.75rem;
+    letter-spacing: 0.07em;
+}
+@media (min-width: 48rem) {
+    html[data-ekraf-ambient] main#main-content .em-hanging-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .em-hanging-stage {
+        height: clamp(17rem, 29vw, 24rem);
+    }
+    .em-hanging-pendulum {
+        width: min(66%, 14.3rem);
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .em-hanging-pendulum {
+        transition: none;
+    }
+}
+@media print {
+    .em-hanging-pendulum {
+        transform: none !important;
+    }
+}
+
+/* Interaction only: no changes to the shared background or identity. */
+.em-hanging-motion-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.65rem;
+    min-width: 9rem;
+    margin: 0 0 1.25rem;
+    padding: 0.5rem 0.85rem;
+    border: 1px solid #b5c6a680;
+    border-radius: 999px;
+    color: #fff3dc;
+    font-weight: 700;
+    font-size: 0.82rem;
+    cursor: pointer;
+}
+.em-hanging-motion-toggle:hover:not(:disabled) {
+    border-color: #efca88;
+    color: #efca88;
+}
+.em-hanging-motion-toggle:disabled {
+    opacity: 0.8;
+    cursor: default;
+}
+.em-hanging-frame {
+    transition:
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+}
+.em-hanging-pendulum:hover .em-hanging-frame {
+    border-color: #efca88;
+    box-shadow:
+        0 12px 24px #061b1580,
+        0 0 20px #efca8840;
+}
+@media (prefers-reduced-motion: reduce) {
+    .em-hanging-frame {
+        transition: none;
+    }
+}

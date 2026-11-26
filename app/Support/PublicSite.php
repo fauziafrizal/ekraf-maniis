@@ -31,6 +31,31 @@ final class PublicSite
         ];
     }
 
+    /**
+     * Embed the small, trusted local brand asset so its first paint does not
+     * depend on a separate image request. Never embed user-uploaded content.
+     */
+    public static function logoSource(array $logo): string
+    {
+        if (($logo['path'] ?? null) !== 'images/logo.jpg') {
+            return $logo['url'];
+        }
+
+        $file = public_path('images/logo-header.png');
+        if (! is_file($file) || ! is_readable($file) || filesize($file) > 65536) {
+            return $logo['url'];
+        }
+
+        $size = @getimagesize($file);
+        if (($size['mime'] ?? null) !== 'image/png') {
+            return $logo['url'];
+        }
+
+        $bytes = file_get_contents($file);
+
+        return $bytes === false ? $logo['url'] : 'data:image/png;base64,'.base64_encode($bytes);
+    }
+
     public static function photo(?string $path, ?string $alt, ?string $credit, ?string $location = null): ?array
     {
         return filled($alt) && filled($credit) ? self::image($path, $alt, $credit, $location) : null;

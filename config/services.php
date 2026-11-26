@@ -14,6 +14,13 @@ return [
     |
     */
 
+    'ekraf_ai' => [
+        'enabled' => env('EKRAF_AI_ENABLED', false),
+        'key' => env('OPENAI_API_KEY'),
+        'model' => env('EKRAF_AI_MODEL'),
+        'daily_limit' => env('EKRAF_AI_DAILY_LIMIT', 50),
+    ],
+
     'postmark' => [
         'key' => env('POSTMARK_API_KEY'),
     ],

@@ -25,7 +25,7 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.4'
-          extensions: mbstring, intl, pdo_sqlite, sqlite3, fileinfo
+          extensions: mbstring, intl, pdo_sqlite, sqlite3, fileinfo, gd
           coverage: none
           tools: composer:v2
 
@@ -49,6 +49,8 @@ jobs:
           APP_DEBUG: 'false'
           APP_URL: http://127.0.0.1:8000
           EKRAF_PUBLIC_URL: https://fauziafrizal.github.io/ekraf-maniis
+          EKRAF_STATIC_PREVIEW: 'true'
+          EKRAF_AI_ENABLED: 'false'
           DB_CONNECTION: sqlite
           SESSION_DRIVER: file
           CACHE_STORE: file

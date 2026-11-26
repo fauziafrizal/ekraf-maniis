@@ -1,0 +1,112 @@
+/* Keep shared page mastheads and section backgrounds open to the same canvas. */
+html[data-ekraf-ambient]
+    main#main-content
+    > :is(
+        .editorial-page-heading,
+        .profile-intro,
+        .leadership-section,
+        .section-masthead,
+        .section-body,
+        .editorial-section,
+        .activity-gallery,
+        .activity-detail-gallery,
+        .editorial-intro,
+        .em-experience-section,
+        .em-discovery,
+        .em-audience
+    ) {
+    background: transparent;
+    border-color: #a9c6ad30;
+}
+html[data-ekraf-ambient] main#main-content :is(.page-title, .section-title, .leadership-heading h2) {
+    color: #fff3dc;
+}
+html[data-ekraf-ambient] main#main-content :is(.prose-copy, .leadership-note) {
+    color: #c8ddce;
+}
+html[data-ekraf-ambient]
+    main#main-content
+    :is(
+        .profile-period,
+        .leadership-card:not(.leadership-card--chair),
+        .leadership-member,
+        .potential-story,
+        .program-entry > article,
+        .activity-journal-entry > article > figure,
+        .em-service-card,
+        .em-tool-card,
+        .em-hub-card
+    ) {
+    background: linear-gradient(140deg, #224e40, #143c30);
+    border-color: #527764;
+}
+html[data-ekraf-ambient] main#main-content .leadership-section {
+    --leadership-text: #fff3dc;
+    --leadership-muted: #c8ddce;
+    --leadership-accent: #efca88;
+}
+html[data-ekraf-ambient] main#main-content .leadership-photo:not(.leadership-card--chair .leadership-photo) {
+    background: #1a4435;
+}
+html[data-ekraf-ambient] main#main-content .profile-period {
+    border-top-color: #efca88;
+    color: #fff3dc;
+}
+html[data-ekraf-ambient] main#main-content :is(.editorial-link, .eyebrow, .em-kicker) {
+    color: #efca88;
+}
+html[data-ekraf-ambient] main#main-content .button-primary {
+    background: #edc784;
+    color: #17382e;
+}
+html[data-ekraf-ambient] main#main-content .button-primary:hover {
+    background: #f5d59c;
+    color: #17382e;
+}
+html[data-ekraf-ambient] main#main-content .button-secondary {
+    background: transparent;
+    color: #fff3dc;
+    border-color: #91b39a;
+}
+html[data-ekraf-ambient] main#main-content .button-secondary:hover {
+    background: #285844;
+    color: #fff3dc;
+}
+html[data-ekraf-ambient] main#main-content :is(input:not([type='checkbox']):not([type='radio']), textarea, select) {
+    background-color: #14382e;
+    color: #f2f6ec;
+    border-color: #739783;
+}
+html[data-ekraf-ambient] main#main-content :is(input, textarea)::placeholder {
+    color: #b6cbbd;
+}
+html[data-ekraf-ambient] main#main-content :is(input, textarea, select):focus-visible {
+    outline-color: #efca88;
+}
+html[data-ekraf-ambient] .site-footer {
+    background: #123129;
+    border-color: #527764;
+    color: #fff3dc;
+}
+html[data-ekraf-ambient] .site-footer .footer-grid {
+    background: #123129;
+}
+html[data-ekraf-ambient] main#main-content :focus-visible {
+    outline-color: #efca88;
+}
+html[data-ekraf-ambient] main#main-content .editorial-contact .editorial-link {
+    color: #17382e;
+}
+@media print {
+    html[data-ekraf-ambient] main#main-content {
+        background: #fff;
+        color: #111;
+    }
+    html[data-ekraf-ambient] main#main-content .em-credential {
+        background: #fff;
+        color: #111;
+    }
+    html[data-ekraf-ambient] main#main-content .em-credential * {
+        color: #111;
+    }
+}

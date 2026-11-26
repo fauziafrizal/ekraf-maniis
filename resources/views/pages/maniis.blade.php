@@ -1,11 +1,7 @@
 @extends('layouts.public')
 
 @section('content')
-    <x-page-heading
-        :eyebrow="$site['location']"
-        title="Potensi Maniis"
-        :description="$site['potential_intro']"
-    />
+    <x-page-heading :eyebrow="$site['location']" title="Potensi Maniis" :description="$site['potential_intro']" />
 
     <section class="site-shell py-12 sm:py-16 lg:py-20" aria-labelledby="potensi-wilayah">
         <h2 id="potensi-wilayah" class="sr-only">Potensi wilayah Maniis</h2>
@@ -18,7 +14,9 @@
                 ])>
                     <div @class([
                         'grid items-baseline gap-4',
-                        'md:grid-cols-[minmax(0,1fr)_minmax(0,1.6fr)] md:gap-10' => ! $potential['photo'],
+                        'md:grid-cols-[minmax(0,1fr)_minmax(0,1.6fr)] md:gap-10' => !$potential[
+                            'photo'
+                        ],
                     ])>
                         <h3 class="section-title">{{ $potential['title'] }}</h3>
                         <div class="prose-copy max-w-2xl space-y-4">

@@ -17,3 +17,9 @@ storage/framework/views/*
 .DS_Store
 .idea
 .vscode
+
+/storage/app/private/*
+/public/audio/sapa-ekraf-welcome.m4a
+/_site
+/.venv
+/ml/__pycache__

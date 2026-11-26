@@ -17,5 +17,9 @@
     },
     "optionalDependencies": {
         "@laravel/multiplex": "^0.4.1"
+    },
+    "dependencies": {
+        "leaflet": "^1.9.4",
+        "pannellum": "^2.5.7"
     }
 }

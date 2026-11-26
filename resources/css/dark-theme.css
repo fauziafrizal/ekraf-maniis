@@ -1,14 +1,14 @@
-:root[data-theme="dark"] {
+:root[data-ekraf-ambient] {
     color-scheme: dark;
-    --dark-page: #101c17;
-    --dark-panel: #1a2c23;
-    --dark-raised: #253d30;
-    --dark-green: #1c4335;
-    --dark-warm: #332d22;
-    --dark-line: #53695a;
-    --dark-text: #f4efe3;
-    --dark-muted: #bdc9be;
-    --dark-gold: #e5bc75;
+    --dark-page: #102f27;
+    --dark-panel: #173e32;
+    --dark-raised: #224e40;
+    --dark-green: #19473a;
+    --dark-warm: #234437;
+    --dark-line: #527764;
+    --dark-text: #fff3dc;
+    --dark-muted: #c8ddce;
+    --dark-gold: #efca88;
     --dark-button-text: #18271f;
     --color-ivory: var(--dark-page);
     --color-ink: var(--dark-text);
@@ -18,301 +18,309 @@
     --color-line: var(--dark-line);
 }
 
-:root[data-theme="dark"] body {
+:root[data-ekraf-ambient] body {
     background: var(--dark-page);
     color: var(--dark-text);
 }
 
-:root[data-theme="dark"] :focus-visible {
+:root[data-ekraf-ambient] :focus-visible {
     outline-color: var(--dark-gold);
 }
 
-:root[data-theme="dark"] .site-header[data-site-header] {
+:root[data-ekraf-ambient] .site-header[data-site-header] {
     border-color: var(--dark-line);
     background: var(--dark-page);
-    box-shadow: 0 .2rem 1rem #07100b52;
+    box-shadow: 0 0.2rem 1rem #07100b52;
 }
 
-:root[data-theme="dark"] .site-header .nav-link:is(:hover, [aria-current="page"]) {
+:root[data-ekraf-ambient] .site-header .nav-link:is(:hover, [aria-current='page']) {
     background: var(--dark-raised);
     color: var(--dark-text);
 }
 
-:root[data-theme="dark"] .site-header .nav-link[aria-current="page"]::after {
+:root[data-ekraf-ambient] .site-header .nav-link[aria-current='page']::after {
     background: var(--dark-gold);
 }
 
-:root[data-theme="dark"] .menu-toggle {
+:root[data-ekraf-ambient] .menu-toggle {
     border-color: #718e7d;
 }
 
-:root[data-theme="dark"] .mobile-nav {
-    box-shadow: 0 .8rem 1.6rem #07100b70;
+:root[data-ekraf-ambient] .mobile-nav {
+    box-shadow: 0 0.8rem 1.6rem #07100b70;
 }
 
-:root[data-theme="dark"] :is(.button-primary, .skip-link),
-:root[data-theme="dark"] .program-detail-facts .button-primary {
+:root[data-ekraf-ambient] :is(.button-primary, .skip-link),
+:root[data-ekraf-ambient] .program-detail-facts .button-primary {
     background: var(--dark-gold);
     color: var(--dark-button-text);
 }
 
-:root[data-theme="dark"] .button-primary:hover,
-:root[data-theme="dark"] .program-detail-facts .button-primary:hover {
+:root[data-ekraf-ambient] .button-primary:hover,
+:root[data-ekraf-ambient] .program-detail-facts .button-primary:hover {
     background: #f1ce90;
     color: var(--dark-button-text);
 }
 
-:root[data-theme="dark"] .editorial-hero-stage--photo .button-secondary:hover {
+:root[data-ekraf-ambient] .editorial-hero-stage--photo .button-secondary:hover {
     background: #fff9eb;
     color: var(--dark-button-text);
 }
 
-:root[data-theme="dark"] .editorial-hero-stage:not(.editorial-hero-stage--photo) {
+:root[data-ekraf-ambient] .editorial-hero-stage:not(.editorial-hero-stage--photo) {
     --hero-rule: var(--dark-gold);
     background: var(--dark-green);
 }
 
-:root[data-theme="dark"] :is(
-    .editorial-page-heading,
-    .editorial-section--potential,
-    .editorial-section[aria-labelledby="programs-title"],
-    .leadership-section,
-    .activity-detail-gallery
-) {
+:root[data-ekraf-ambient]
+    :is(
+        .editorial-page-heading,
+        .editorial-section--potential,
+        .editorial-section[aria-labelledby='programs-title'],
+        .leadership-section,
+        .activity-detail-gallery
+    ) {
     border-color: var(--dark-line);
     background: var(--dark-panel);
 }
 
-:root[data-theme="dark"] :is(
-    .editorial-section[aria-labelledby="activities-title"],
-    .editorial-contact,
-    .site-contact-heading,
-    .section-masthead--subsectors.section-masthead,
-    .section-masthead--activities.section-masthead
-) {
+:root[data-ekraf-ambient]
+    :is(
+        .editorial-section[aria-labelledby='activities-title'],
+        .editorial-contact,
+        .site-contact-heading,
+        .section-masthead--subsectors.section-masthead,
+        .section-masthead--activities.section-masthead
+    ) {
     border-color: var(--dark-line);
     background: var(--dark-green);
 }
 
-:root[data-theme="dark"] :is(
-    .section-masthead--potential.section-masthead,
-    .section-masthead--programs.section-masthead,
-    .profile-period,
-    .activity-detail-hero
-) {
+:root[data-ekraf-ambient]
+    :is(
+        .section-masthead--potential.section-masthead,
+        .section-masthead--programs.section-masthead,
+        .profile-period,
+        .activity-detail-hero
+    ) {
     border-color: var(--dark-line);
     background: var(--dark-warm);
 }
 
-:root[data-theme="dark"] [data-page="maniis"]:not(:has(.potential-stories)) .editorial-page-heading {
+:root[data-ekraf-ambient] [data-page='maniis']:not(:has(.potential-stories)) .editorial-page-heading {
     background: var(--dark-green);
 }
 
-:root[data-theme="dark"] [data-page="subsectors"]:not(:has(.sector-directory, .sector-empty)) .editorial-page-heading,
-:root[data-theme="dark"] [data-page="activities.show"]:not(:has(.activity-detail-hero)) .editorial-page-heading {
+:root[data-ekraf-ambient] [data-page='subsectors']:not(:has(.sector-directory, .sector-empty)) .editorial-page-heading,
+:root[data-ekraf-ambient] [data-page='activities.show']:not(:has(.activity-detail-hero)) .editorial-page-heading {
     background: var(--dark-warm);
 }
 
-:root[data-theme="dark"] .leadership-section {
+:root[data-ekraf-ambient] .leadership-section {
     --leadership-accent: var(--dark-gold);
 }
 
-:root[data-theme="dark"] :is(
-    .potential-card,
-    .potential-story,
-    .potential-story-photo,
-    .home-preview-card > article,
-    .program-entry > article,
-    .activity-journal-entry > article > figure,
-    .activity-gallery-photo,
-    .activity-detail-cover,
-    .activity-detail-gallery-grid figure,
-    .leadership-card:not(.leadership-card--chair),
-    .leadership-member,
-    .site-contact-channels
-) {
+:root[data-ekraf-ambient]
+    :is(
+        .potential-card,
+        .potential-story,
+        .potential-story-photo,
+        .home-preview-card > article,
+        .program-entry > article,
+        .activity-journal-entry > article > figure,
+        .activity-gallery-photo,
+        .activity-detail-cover,
+        .activity-detail-gallery-grid figure,
+        .leadership-card:not(.leadership-card--chair),
+        .leadership-member,
+        .site-contact-channels
+    ) {
     border-color: var(--dark-line);
     background: var(--dark-panel);
     color: var(--dark-text);
 }
 
-:root[data-theme="dark"] :is(
-    .potential-story--lead,
-    .potential-card:nth-child(2),
-    .sector-entry:nth-child(odd),
-    .program-empty,
-    .program-detail-collaboration,
-    .site-contact-channel
-) {
+:root[data-ekraf-ambient]
+    :is(
+        .potential-story--lead,
+        .potential-card:nth-child(2),
+        .sector-entry:nth-child(odd),
+        .program-empty,
+        .program-detail-collaboration,
+        .site-contact-channel
+    ) {
     border-color: var(--dark-line);
     background: var(--dark-raised);
     color: var(--dark-text);
 }
 
-:root[data-theme="dark"] :is(
-    .potential-card:nth-child(3),
-    .potential-story:nth-child(odd):not(.potential-story--lead),
-    .program-entry--featured > article,
-    .program-detail-facts,
-    .sector-empty,
-    .activity-gallery,
-    .home-gallery,
-    .site-contact-intro
-) {
+:root[data-ekraf-ambient]
+    :is(
+        .potential-card:nth-child(3),
+        .potential-story:nth-child(odd):not(.potential-story--lead),
+        .program-entry--featured > article,
+        .program-detail-facts,
+        .sector-empty,
+        .activity-gallery,
+        .home-gallery,
+        .site-contact-intro
+    ) {
     border-color: var(--dark-line);
     background: var(--dark-warm);
     color: var(--dark-text);
 }
 
-:root[data-theme="dark"] :is(
-    .profile-period,
-    .program-detail-facts,
-    .site-contact-intro,
-    .site-contact-heading
-) {
+:root[data-ekraf-ambient] :is(.profile-period, .program-detail-facts, .site-contact-intro, .site-contact-heading) {
     border-top-color: var(--dark-gold);
 }
 
-:root[data-theme="dark"] :is(.program-entry--featured > article, .sector-empty) {
+:root[data-ekraf-ambient] :is(.program-entry--featured > article, .sector-empty) {
     border-inline-start-color: var(--dark-gold);
 }
 
-:root[data-theme="dark"] .potential-card {
+:root[data-ekraf-ambient] .potential-card {
     border-top-color: #789b85;
 }
 
-:root[data-theme="dark"] .potential-card:first-child {
+:root[data-ekraf-ambient] .potential-card:first-child {
     border-top-color: var(--dark-gold);
     background: var(--dark-green);
 }
 
-:root[data-theme="dark"] .potential-card:nth-child(2) {
+:root[data-ekraf-ambient] .potential-card:nth-child(2) {
     border-top-color: #a1ad76;
 }
 
-:root[data-theme="dark"] .potential-card:nth-child(3) {
+:root[data-ekraf-ambient] .potential-card:nth-child(3) {
     border-top-color: var(--dark-gold);
 }
 
-:root[data-theme="dark"] .leadership-photo:not(.leadership-card--chair .leadership-photo) {
+:root[data-ekraf-ambient] .leadership-photo:not(.leadership-card--chair .leadership-photo) {
     background: var(--dark-raised);
 }
 
-:root[data-theme="dark"] :is(
-    .activity-empty,
-    .activity-journal,
-    .sector-directory,
-    .sector-entry,
-    .program-detail-facts dl > div,
-    .program-entry--featured dl,
-    .leadership-other
-) {
+:root[data-ekraf-ambient]
+    :is(
+        .activity-empty,
+        .activity-journal,
+        .sector-directory,
+        .sector-entry,
+        .program-detail-facts dl > div,
+        .program-entry--featured dl,
+        .leadership-other
+    ) {
     border-color: var(--dark-line);
 }
 
-:root[data-theme="dark"] .activity-detail-hero {
+:root[data-ekraf-ambient] .activity-detail-hero {
     --detail-label: var(--dark-gold);
     --detail-lead: var(--dark-muted);
     --detail-rule: var(--dark-gold);
 }
 
-:root[data-theme="dark"] .activity-detail-date {
+:root[data-ekraf-ambient] .activity-detail-date {
     border-top-color: var(--dark-gold);
     color: var(--dark-gold);
 }
 
-:root[data-theme="dark"] :is(.potential-index a, .card-carousel-buttons button) {
+:root[data-ekraf-ambient] :is(.potential-index a, .card-carousel-buttons button) {
     border-color: #718e7d;
     background: var(--dark-panel);
     color: var(--dark-text);
 }
 
-:root[data-theme="dark"] :is(.potential-index a, .card-carousel-buttons button, .site-contact-channel):is(:hover, :focus-visible):not(:disabled) {
+:root[data-ekraf-ambient]
+    :is(.potential-index a, .card-carousel-buttons button, .site-contact-channel):is(:hover, :focus-visible):not(
+        :disabled
+    ) {
     border-color: var(--dark-gold);
     background: var(--dark-green);
     color: var(--dark-text);
 }
 
-:root[data-theme="dark"] .card-carousel-buttons button:disabled {
+:root[data-ekraf-ambient] .card-carousel-buttons button:disabled {
     border-color: var(--dark-line);
     background: #26352d;
     color: #adb9ad;
 }
 
-:root[data-theme="dark"] [data-card-track] {
+:root[data-ekraf-ambient] [data-card-track] {
     scrollbar-color: #789585 transparent;
 }
 
-:root[data-theme="dark"] :is(.editorial-link, .editorial-hero-credit a) {
+:root[data-ekraf-ambient] :is(.editorial-link, .editorial-hero-credit a) {
     color: var(--dark-gold);
     text-decoration-color: var(--dark-gold);
 }
 
-:root[data-theme="dark"] .site-footer {
+:root[data-ekraf-ambient] .site-footer {
     border-top-color: var(--dark-gold);
     background: #0c1812;
     color: var(--dark-text);
 }
 
-:root[data-theme="dark"] .site-footer p:not(.footer-slogan) {
+:root[data-ekraf-ambient] .site-footer p:not(.footer-slogan) {
     color: var(--dark-muted);
 }
 
-:root[data-theme="dark"] [data-page="contact"] .contact-hero {
+:root[data-ekraf-ambient] [data-page='contact'] .contact-hero {
     border-bottom-color: var(--dark-gold);
-    background-color: #183427;
-    background-blend-mode: multiply;
+    background-color: transparent;
+    background-blend-mode: normal;
     color: var(--dark-text);
 }
 
 /* Legacy color utilities remain in local templates and shared cards. */
-:root[data-theme="dark"] main :is(
-    .bg-white:not(.activity-journal-entry > article),
-    [class~="bg-white/70"],
-    [class~="bg-[#f9faf5]" i]
-) {
+:root[data-ekraf-ambient]
+    main
+    :is(.bg-white:not(.activity-journal-entry > article), [class~='bg-white/70'], [class~='bg-[#f9faf5]' i]) {
     background-color: var(--dark-panel);
 }
 
-:root[data-theme="dark"] main :is(
-    [class~="text-[#173f35]" i],
-    [class~="text-[#365a4b]" i]
-) {
+:root[data-ekraf-ambient] main :is([class~='text-[#173f35]' i], [class~='text-[#365a4b]' i]) {
     color: var(--dark-text);
 }
 
-:root[data-theme="dark"] main :is(
-    [class~="text-[#416656]" i],
-    [class~="text-[#46564f]" i]
-) {
+:root[data-ekraf-ambient] main :is([class~='text-[#416656]' i], [class~='text-[#46564f]' i]) {
     color: var(--dark-muted);
 }
 
-:root[data-theme="dark"] main :is(
-    [class~="border-[#a7b7a7]" i],
-    [class~="border-[#dfe4d8]" i],
-    [class~="border-[#e5e9df]" i],
-    [class~="border-[#173f35]/15" i]
-) {
+:root[data-ekraf-ambient]
+    main
+    :is(
+        [class~='border-[#a7b7a7]' i],
+        [class~='border-[#dfe4d8]' i],
+        [class~='border-[#e5e9df]' i],
+        [class~='border-[#173f35]/15' i]
+    ) {
     border-color: var(--dark-line);
 }
 
-:root[data-theme="dark"] main [class~="bg-[#f5e8cc]" i] {
+:root[data-ekraf-ambient] main [class~='bg-[#f5e8cc]' i] {
     background: #443727;
     color: #f1d697;
 }
 
-:root[data-theme="dark"] main [class~="bg-[#e3ecef]" i] {
+:root[data-ekraf-ambient] main [class~='bg-[#e3ecef]' i] {
     background: #233d48;
     color: #c2e4f0;
 }
 
-:root[data-theme="dark"] main [class~="bg-[#ddede1]" i] {
+:root[data-ekraf-ambient] main [class~='bg-[#ddede1]' i] {
     background: #244333;
     color: #c9ebd3;
 }
 
-:root[data-theme="dark"] main [class~="bg-[#e8e8e1]" i] {
+:root[data-ekraf-ambient] main [class~='bg-[#e8e8e1]' i] {
     background: #353830;
     color: #e5e6d8;
+}
+
+:root[data-ekraf-ambient][data-theme='dark'] {
+    --dark-page: #0d211a;
+    --dark-panel: #15372d;
+    --dark-raised: #1e4436;
+    --dark-green: #173e32;
+    --dark-warm: #203d30;
+    --dark-line: #486b58;
 }

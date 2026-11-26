@@ -1,0 +1,13 @@
+/* Private service workflows, using the existing shared theme. */
+.em-desk-grid {display:grid;gap:1.25rem;grid-template-columns:minmax(0,1fr);align-items:start;}
+.em-desk-grid .em-admin-form {margin-top:1.25rem;}
+.em-desk-grid .section-title {font-size:clamp(1.6rem,3vw,2.5rem);}
+.em-desk-timeline {margin:1.2rem 0;padding-inline-start:1rem;border-inline-start:1px solid #91b29a65;display:grid;gap:1rem;}
+.em-desk-timeline li {position:relative;padding-inline-start:.6rem;}
+.em-desk-timeline li::before {content:'';position:absolute;inset-inline-start:-1.3rem;top:.5rem;width:.55rem;height:.55rem;background:#efca88;border-radius:50%;}
+.em-desk-timeline time {display:block;color:var(--color-muted);font-size:.86rem;}
+.em-desk-metrics {display:grid;gap:.8rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,9rem),1fr));}
+.em-desk-metrics a {display:flex;flex-direction:column;gap:.35rem;text-decoration:none;}
+.em-desk-metrics strong {font:400 2rem/1.2 var(--font-display);color:#efca88;}
+.em-desk-metrics a[aria-current='page'] {border-color:#efca88!important;}
+@media(min-width:56rem){.em-desk-grid{grid-template-columns:1.15fr .85fr;}}

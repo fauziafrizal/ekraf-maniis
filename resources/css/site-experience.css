@@ -14,19 +14,19 @@ html {
     z-index: 10;
     inset-block-start: 0;
     background: #f8f5ed;
-    box-shadow: 0 .2rem 1rem #142e2110;
+    box-shadow: 0 0.2rem 1rem #142e2110;
 }
 
-.site-header[data-site-header] .nav-link[aria-current="page"] {
+.site-header[data-site-header] .nav-link[aria-current='page'] {
     position: relative;
     background: #e8ece2;
     text-decoration: none;
 }
 
-.site-header[data-site-header] .nav-link[aria-current="page"]::after {
+.site-header[data-site-header] .nav-link[aria-current='page']::after {
     position: absolute;
-    inset-inline: .72rem;
-    inset-block-end: .28rem;
+    inset-inline: 0.72rem;
+    inset-block-end: 0.28rem;
     height: 2px;
     border-radius: 1rem;
     background: #9d7841;
@@ -55,16 +55,16 @@ html {
     display: block;
     width: 2rem;
     height: 2px;
-    margin-block-end: .85rem;
+    margin-block-end: 0.85rem;
     background: #a37c43;
     content: '';
 }
 
-.editorial-section[aria-labelledby="programs-title"] {
+.editorial-section[aria-labelledby='programs-title'] {
     background: #fbf8ef;
 }
 
-.editorial-section[aria-labelledby="activities-title"] {
+.editorial-section[aria-labelledby='activities-title'] {
     background: #e9eee4;
 }
 
@@ -76,7 +76,7 @@ html {
 .home-gallery-grid {
     display: grid;
     align-items: start;
-    gap: clamp(.9rem, 2vw, 1.5rem);
+    gap: clamp(0.9rem, 2vw, 1.5rem);
 }
 
 .home-gallery-card img {
@@ -84,11 +84,11 @@ html {
 }
 
 .home-gallery-card .activity-gallery-action {
-    inset-block: .65rem auto;
+    inset-block: 0.65rem auto;
 }
 
 .home-gallery-card:first-child figcaption {
-    padding: .9rem 1.1rem;
+    padding: 0.9rem 1.1rem;
 }
 
 .home-gallery-card:first-child figcaption > :first-child:not(:only-child) {
@@ -163,7 +163,7 @@ html {
 }
 
 .site-footer {
-    border-top: .2rem solid #987442;
+    border-top: 0.2rem solid #987442;
 }
 
 .footer-links a {
@@ -182,7 +182,7 @@ html {
 
 @media (max-height: 29rem) {
     :root {
-        --navigation-clearance: .75rem;
+        --navigation-clearance: 0.75rem;
     }
 
     .site-header[data-site-header] {
@@ -204,8 +204,8 @@ html {
 
 @keyframes site-reveal {
     from {
-        opacity: .68;
-        transform: translateY(.5rem);
+        opacity: 0.68;
+        transform: translateY(0.5rem);
     }
 
     to {
@@ -216,7 +216,7 @@ html {
 
 @keyframes hero-arrive {
     from {
-        opacity: .88;
+        opacity: 0.88;
         transform: scale(1.025);
     }
 
@@ -227,21 +227,8 @@ html {
 }
 
 @media (prefers-reduced-motion: no-preference) {
-    @view-transition {
-        navigation: auto;
-    }
-
-    ::view-transition-old(root),
-    ::view-transition-new(root) {
-        animation-duration: .22s;
-    }
-
-    [data-revealed]:not(:focus-within) {
-        animation: site-reveal .46s ease-out;
-    }
-
     .editorial-hero-media img {
-        animation: hero-arrive .8s ease-out;
+        animation: hero-arrive 0.8s ease-out;
     }
 
     .site-header .nav-link,
@@ -251,20 +238,26 @@ html {
     .potential-card,
     .home-preview-card > article,
     .footer-links a {
-        transition: color .17s ease, background-color .17s ease, border-color .17s ease;
+        transition:
+            color 0.17s ease,
+            background-color 0.17s ease,
+            border-color 0.17s ease;
     }
 
     .potential-card-arrow {
-        transition: transform .22s ease, color .17s ease, background-color .17s ease;
+        transition:
+            transform 0.22s ease,
+            color 0.17s ease,
+            background-color 0.17s ease;
     }
 
     .potential-card:is(:hover, :focus-within) .potential-card-arrow {
-        transform: translateX(.2rem);
+        transform: translateX(0.2rem);
     }
 }
 
 .site-contact-heading {
-    border-bottom: .2rem solid #b69054;
+    border-bottom: 0.2rem solid #b69054;
     background: #183f34;
     color: #fff9eb;
 }
@@ -287,7 +280,7 @@ html {
 .site-contact-channels {
     align-self: start;
     min-width: 0;
-    border-block-start: .18rem solid #a28149;
+    border-block-start: 0.18rem solid #a28149;
     padding: clamp(1.1rem, 4vw, 2.9rem);
     background: #f3ead8;
 }
@@ -301,7 +294,7 @@ html {
     display: block;
     min-width: 0;
     border: 1px solid #c2cabc;
-    padding: .8rem 1rem;
+    padding: 0.8rem 1rem;
     background: #f3f5eb;
     overflow-wrap: anywhere;
 }
@@ -312,44 +305,44 @@ html {
     background: #e6eee1;
 }
 
-[data-page="contact"] .contact-hero {
-    border-block-end: .2rem solid #b69054;
+[data-page='contact'] .contact-hero {
+    border-block-end: 0.2rem solid #b69054;
 }
 
-[data-page="contact"] .contact-hero a:focus-visible {
+[data-page='contact'] .contact-hero a:focus-visible {
     outline-color: #eec87a;
 }
 
 @media (min-width: 48rem) {
     .site-contact-layout {
-        grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+        grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
     }
 }
 
 /* Keep the page accents when a locally customized template uses the earlier layout. */
-[data-page="maniis"]:not(:has(.potential-stories)) .editorial-page-heading {
+[data-page='maniis']:not(:has(.potential-stories)) .editorial-page-heading {
     background: #dfe9df;
 }
 
-[data-page="maniis"]:not(:has(.potential-stories)) article[id] {
+[data-page='maniis']:not(:has(.potential-stories)) article[id] {
     border-color: #a7a988;
 }
 
-[data-page="subsectors"]:not(:has(.sector-directory, .sector-empty)) .editorial-page-heading {
+[data-page='subsectors']:not(:has(.sector-directory, .sector-empty)) .editorial-page-heading {
     background: #f0e3cc;
 }
 
-[data-page="programs.show"]:not(:has(.program-detail-hero)) .editorial-page-heading {
-    border-bottom: .2rem solid #b69054;
+[data-page='programs.show']:not(:has(.program-detail-hero)) .editorial-page-heading {
+    border-bottom: 0.2rem solid #b69054;
     background: #1a4337;
     color: #fff9eb;
 }
 
-[data-page="programs.show"]:not(:has(.program-detail-hero)) .editorial-page-heading :is(.page-title, .prose-copy) {
+[data-page='programs.show']:not(:has(.program-detail-hero)) .editorial-page-heading :is(.page-title, .prose-copy) {
     color: inherit;
 }
 
-[data-page="activities.show"]:not(:has(.activity-detail-hero)) .editorial-page-heading {
-    border-bottom: .2rem solid #638574;
+[data-page='activities.show']:not(:has(.activity-detail-hero)) .editorial-page-heading {
+    border-bottom: 0.2rem solid #638574;
     background: #f2e8d6;
 }

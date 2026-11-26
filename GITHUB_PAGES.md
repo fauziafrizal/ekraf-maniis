@@ -24,3 +24,7 @@ python3 scripts/export_github_pages.py --output _site
 ```
 
 Folder `_site` berisi halaman HTML, sitemap, aset Vite, foto publik, dan `musik-latar.mp3` yang diambil dari rute audio Laravel. URL lokal dan aset CSS menggunakan prefiks proyek `/ekraf-maniis`. Berkas `.env`, basis data, dependensi Composer, dan sumber PHP tetap di luar hasil ekspor.
+
+## Versi publik
+
+GitHub Pages adalah ekspor statis, bukan server Laravel. Fitur browser seperti pencarian menu, kalkulator, kuis, favorit, animasi dan draf WhatsApp tersedia. Formulir server, login, pelacakan, AI eksternal dan prediksi tidak diaktifkan; tombol Tanya Ekraf membuka FAQ. Database produksi dan kunci rahasia tidak pernah diekspor. Kalender dan statistik adalah snapshot publik.

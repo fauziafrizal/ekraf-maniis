@@ -103,3 +103,46 @@ Website memutar “Musik Degung Sunda” oleh fiikuri dari `public/audio/musik-d
 - Logo Ekraf Maniis, logo Pemda bila diizinkan, dan foto asli Maniis dengan informasi lokasi serta kredit pemilik.
 - Nomor WhatsApp, alamat email, URL akun media sosial organisasi, dan domain publik yang sudah dikonfirmasi.
 - Salinan materi kerja pengurus, khususnya halaman 5–10, untuk mencocokkan struktur, potensi, dan usulan program sebelum disahkan. [Ekraf_Maniis_Siap_WhatsApp(1).pdf](https://chatgpt.com/library?file_id=libfile_d71ed1c39ca88191b08843f73a4d4e22&account_id=personal)
+
+## Struktur kode
+
+- `app/Http/Controllers/`: logika halaman publik dan panel pengurus.
+- `app/Models/`: model data organisasi, program, kegiatan, dan katalog.
+- `resources/views/layouts/`: layout bersama (header, footer, navigasi).
+- `resources/views/components/`: komponen Blade yang digunakan kembali.
+- `resources/views/pages/hub/`: modul Smart Creative Hub.
+- `resources/css/app.css`: entry point CSS; impor modul desain dan fitur.
+- `resources/js/app.js`: entry point JavaScript; impor modul per fungsi.
+- `routes/web.php`: rute web publik dan admin.
+- `routes/console.php`: perintah Artisan.
+- `tests/Feature/`: pengujian fitur.
+
+### Pemeriksaan perubahan
+
+```bash
+vendor/bin/pint --test
+npm run build
+php artisan test
+```
+
+Folder vendor, node_modules, dan public/build adalah hasil instalasi atau build; jangan diedit secara manual.
+
+## Sapa Ekraf dan animasi
+
+Asisten menggunakan pencarian informasi publik secara lokal tanpa API. Mode AI generatif opsional dinonaktifkan secara bawaan. Jika pengelola ingin mengaktifkannya, konfigurasi `EKRAF_AI_ENABLED=true`, `EKRAF_AI_MODEL` dan `OPENAI_API_KEY` di `.env` server (jangan commit kunci). Atur `EKRAF_AI_DAILY_LIMIT` sesuai anggaran. Jalankan `php artisan config:clear` setelah perubahan konfigurasi. Pengunjung harus memilih mode AI eksternal sebelum pertanyaan dikirim ke penyedia API. Integrasi eksternal dapat menimbulkan biaya; uji dengan akun dan model yang diizinkan sebelum publikasi. Pencarian lokal tetap tersedia saat API tidak aktif atau gagal. Integrasi membutuhkan server Laravel aktif, bukan hosting statis saja.
+
+## Modul ekspansi
+
+- `/komunitas`: kiriman moderasi untuk forum, pameran, portofolio, challenge, kompetisi dan kolaborasi.
+- `/pengurus/sekretariat`: arsip PDF privat, surat, notulen, penerbitan/pencabutan QR, voting internal per akun pengurus, moderasi, dan survei.
+- `/katalog/{id}`: detail katalog, foto, QR, toko, ulasan.
+- `/peta-umkm`: Leaflet untuk koordinat yang diizinkan pemilik; Pannellum memerlukan foto equirectangular asli berizin di `public/images/panorama-maniis.jpg`.
+- `/creative-challenge`: kuis, poin dan lencana lokal; `/notifikasi`: pengingat hanya saat halaman terbuka.
+- `/studio-kreatif`: draf lokal; AI eksternal mengikuti konfigurasi dan persetujuan sebelumnya.
+- `/klasifikasi-pembinaan`: pipeline Random Forest dalam `ml/`, tidak aktif sebelum model disetujui (lihat `ml/README.md`).
+
+Sebelum produksi: jalankan migrasi, buat akun pengurus dengan `php artisan ekraf:admin-create`, gunakan HTTPS dan domain resmi, pastikan QR dibuat dari domain resmi, tinjau kebijakan privasi, backup database dan file privat, lakukan pengujian perangkat asli. Jangan menyimpan data riset, model, atau API key pada repository publik. Semua fitur database memerlukan hosting Laravel aktif.
+
+## Sambutan suara Sapa Ekraf
+
+Narasi berada di `config/ekraf.php` (`welcome_narration`). Pemutaran hanya terjadi setelah pengunjung menekan tombol. Musik latar dijeda saat sambutan. Browser mencoba suara Indonesia terbaik yang tersedia jika tidak ada file audio. Kualitas dan ketersediaan bergantung pada perangkat. Untuk suara yang konsisten, siapkan file hasil TTS neural berizin `public/audio/sapa-ekraf-welcome.mp3` atau `.m4a` sesuai narasi. Periksa izin penggunaan dan dengarkan hasil sebelum publikasi. Teks tetap tersedia bagi pengguna tanpa audio.

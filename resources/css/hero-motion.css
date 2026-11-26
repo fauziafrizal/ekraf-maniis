@@ -1,0 +1,139 @@
+/* Decorative foreground ornament: no changes to the shared background, photo or text. */
+[data-page='home'] .em-hero-motion {
+    position: absolute;
+    z-index: 1;
+    top: 8%;
+    right: 3%;
+    width: min(64%, 19rem);
+    pointer-events: none;
+    color: #fff1cb;
+    text-align: center;
+    filter: drop-shadow(0 3px 9px #071d1670);
+}
+.em-hero-motion svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+}
+.em-hero-motion-label {
+    display: inline-block;
+    margin-top: -0.6rem;
+    padding: 0.35rem 0.7rem;
+    border: 1px solid #f3d7a460;
+    border-radius: 999px;
+    background: #12352be8;
+    font-size: clamp(0.56rem, 1vw, 0.71rem);
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    color: #fff1cb;
+}
+.em-hero-orbit,
+.em-hero-star {
+    transform-origin: 140px 130px;
+}
+.em-hero-spark {
+    opacity: 0.8;
+}
+.em-hero-motion-toggle {
+    position: absolute;
+    z-index: 3;
+    inset: 0.8rem auto auto 0.8rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 0.65rem;
+    min-height: 2.4rem;
+    min-width: 8.3rem;
+    border: 1px solid #e5ca9470;
+    border-radius: 999px;
+    color: #fff1cb;
+    background: #12352be8;
+    font-size: 0.72rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+.em-hero-motion-toggle svg {
+    width: 0.85rem;
+    height: 0.85rem;
+    flex: none;
+}
+.em-hero-motion-toggle:disabled {
+    cursor: default;
+}
+.em-hero-motion-toggle:hover:not(:disabled) {
+    border-color: #ffe5a9;
+}
+@keyframes em-hero-orbit-turn {
+    to {
+        transform: rotate(360deg);
+    }
+}
+@keyframes em-hero-star-breathe {
+    0%,
+    100% {
+        transform: scale(0.96);
+    }
+    50% {
+        transform: scale(1.07);
+    }
+}
+@keyframes em-hero-spark-breathe {
+    0%,
+    100% {
+        opacity: 0.45;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+@media (prefers-reduced-motion: no-preference) {
+    .em-hero-orbit--outer {
+        animation: em-hero-orbit-turn 20s linear infinite;
+    }
+    .em-hero-orbit--inner {
+        animation: em-hero-orbit-turn 15s linear infinite reverse;
+    }
+    .em-hero-star {
+        animation: em-hero-star-breathe 7s ease-in-out infinite;
+    }
+    .em-hero-spark {
+        animation: em-hero-spark-breathe 6s ease-in-out infinite;
+    }
+    .em-hero-spark--two {
+        animation-delay: -2s;
+    }
+    .em-hero-spark--three {
+        animation-delay: -4s;
+    }
+}
+[data-hero-motion-paused] :is(.em-hero-orbit, .em-hero-star, .em-hero-spark),
+[data-page='home'] [data-hero-motion-paused].editorial-hero-media > img {
+    animation-play-state: paused !important;
+}
+@media (max-width: 47.99rem) {
+    [data-page='home'] .em-hero-motion {
+        width: min(48%, 10rem);
+        top: 4%;
+        right: 3%;
+    }
+    .em-hero-motion-label {
+        display: none;
+    }
+    .em-hero-motion-toggle {
+        inset: 0.55rem auto auto 0.55rem;
+        min-width: 0;
+        font-size: 0.68rem;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .em-hero-motion-toggle {
+        visibility: hidden;
+    }
+}
+@media print {
+    .em-hero-motion,
+    .em-hero-motion-toggle {
+        display: none;
+    }
+}

@@ -27,7 +27,8 @@
                     <div>
                         <dt>Jadwal</dt>
                         <dd>
-                            <time datetime="{{ $program->starts_at->toIso8601String() }}">{{ $program->starts_at->translatedFormat('j F Y, H.i') }} WIB</time>
+                            <time
+                                datetime="{{ $program->starts_at->toIso8601String() }}">{{ $program->starts_at->translatedFormat('j F Y, H.i') . ' WIB' }}</time>
                         </dd>
                     </div>
                 @endif

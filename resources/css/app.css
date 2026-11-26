@@ -1,14 +1,34 @@
-@import '@fontsource-variable/dm-sans';
-@import '@fontsource/dm-serif-display/latin-400.css';
 @import 'tailwindcss';
 @import './editorial.css';
 @import './potential-carousel.css';
 @import './site-experience.css';
 @import './site-settings.css';
+@import './visual-refinement.css';
+@import './public-services.css';
+@import './creative-hub.css';
+@import './fixed-layout.css';
+@import './visitor-experience.css';
+@import './live-experience.css';
+@import './business-toolkit.css';
+@import './community-experience.css';
+@import './voice-welcome.css';
+@import './first-paint.css';
+@import './home-editorial.css';
+@import './home-ambient.css';
+@import './drag-experience.css';
+@import './site-ambient-consistency.css';
+@import './contact-premium.css';
+@import './interface-refinement.css';
+@import './hanging-portraits.css';
+@import './image-interaction.css';
+@import './service-desk.css';
+@import './hero-motion.css';
+@import './visitor-navigator.css';
+@import './assistant-sector-premium.css';
 
 @theme {
-    --font-sans: 'DM Sans Variable', ui-sans-serif, system-ui, sans-serif;
-    --font-display: 'DM Serif Display', Georgia, serif;
+    --font-sans: Arial, Helvetica, sans-serif;
+    --font-display: Georgia, 'Times New Roman', serif;
     --color-pine: #173f35;
     --color-ivory: #f8f5ed;
     --color-gold: #d4a54e;
@@ -74,7 +94,7 @@
         flex: none;
         max-width: calc(100% - 6rem);
         align-items: center;
-        gap: .75rem;
+        gap: 0.75rem;
         line-height: 1.05;
         color: var(--color-pine);
     }
@@ -83,13 +103,13 @@
     .footer-brand {
         display: block;
         font: 400 clamp(1.45rem, 3vw, 2rem)/1 var(--font-display);
-        letter-spacing: -.025em;
+        letter-spacing: -0.025em;
     }
 
     .wordmark-caption {
         display: block;
-        margin-top: .28rem;
-        font-size: .8125rem;
+        margin-top: 0.28rem;
+        font-size: 0.8125rem;
         font-weight: 550;
         line-height: 1.2;
     }
@@ -103,7 +123,7 @@
     }
 
     .government-logo {
-        margin-top: .75rem;
+        margin-top: 0.75rem;
     }
 
     .desktop-nav {
@@ -112,13 +132,13 @@
 
     .nav-link {
         display: block;
-        border-radius: .35rem;
-        padding: .55rem .72rem;
+        border-radius: 0.35rem;
+        padding: 0.55rem 0.72rem;
         color: var(--color-pine);
-        font-size: .9rem;
+        font-size: 0.9rem;
         font-weight: 650;
-        text-decoration-thickness: .08em;
-        text-underline-offset: .28em;
+        text-decoration-thickness: 0.08em;
+        text-underline-offset: 0.28em;
     }
 
     .nav-link:hover,
@@ -131,14 +151,14 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: .55rem;
+        gap: 0.55rem;
         cursor: pointer;
         min-height: 2.75rem;
-        padding-inline: .7rem;
+        padding-inline: 0.7rem;
         border: 1px solid #a6b6aa;
-        border-radius: .35rem;
+        border-radius: 0.35rem;
         color: var(--color-pine);
-        font-size: .875rem;
+        font-size: 0.875rem;
         font-weight: 700;
         list-style: none;
     }
@@ -150,7 +170,7 @@
     .menu-icon {
         display: grid;
         width: 1rem;
-        gap: .24rem;
+        gap: 0.24rem;
     }
 
     .menu-icon::before,
@@ -162,18 +182,18 @@
     }
 
     .mobile-menu[open] .menu-icon::before {
-        transform: translateY(.18rem) rotate(45deg);
+        transform: translateY(0.18rem) rotate(45deg);
     }
 
     .mobile-menu[open] .menu-icon::after {
-        transform: translateY(-.18rem) rotate(-45deg);
+        transform: translateY(-0.18rem) rotate(-45deg);
     }
 
     .mobile-nav {
         position: absolute;
         inset: 100% 0 auto;
         display: grid;
-        padding: .75rem 1.25rem;
+        padding: 0.75rem 1.25rem;
         border-bottom: 1px solid var(--color-line);
         background: var(--color-ivory);
         box-shadow: 0 16px 25px #173f351a;
@@ -181,17 +201,17 @@
 
     .mobile-nav .nav-link {
         min-height: 2.75rem;
-        padding: .7rem .8rem;
+        padding: 0.7rem 0.8rem;
     }
 
     .skip-link {
         position: absolute;
-        top: .65rem;
-        left: .65rem;
+        top: 0.65rem;
+        left: 0.65rem;
         z-index: 3;
         transform: translateY(-170%);
-        border-radius: .25rem;
-        padding: .65rem 1rem;
+        border-radius: 0.25rem;
+        padding: 0.65rem 1rem;
         background: var(--color-gold);
         color: var(--color-ink);
         font-weight: 700;
@@ -203,9 +223,9 @@
 
     .eyebrow {
         color: inherit;
-        font-size: .875rem;
+        font-size: 0.875rem;
         font-weight: 750;
-        letter-spacing: .09em;
+        letter-spacing: 0.09em;
         text-transform: uppercase;
     }
 
@@ -213,7 +233,7 @@
     .section-title {
         font-family: var(--font-display);
         font-weight: 400;
-        letter-spacing: -.025em;
+        letter-spacing: -0.025em;
         line-height: 1.08;
         overflow-wrap: anywhere;
     }
@@ -242,8 +262,8 @@
         align-items: center;
         justify-content: center;
         border: 1px solid transparent;
-        border-radius: .35rem;
-        padding: .62rem 1.05rem;
+        border-radius: 0.35rem;
+        padding: 0.62rem 1.05rem;
         font-weight: 730;
         line-height: 1.35;
     }
@@ -264,7 +284,7 @@
 
     .button-secondary:hover {
         text-decoration: underline;
-        text-underline-offset: .2em;
+        text-underline-offset: 0.2em;
     }
 
     .site-footer {
@@ -279,7 +299,7 @@
     }
 
     .footer-grid p {
-        margin-top: .35rem;
+        margin-top: 0.35rem;
         color: #d7ded4;
         overflow-wrap: anywhere;
     }
@@ -292,19 +312,21 @@
 
     .footer-links {
         display: flex;
-        margin-top: .55rem;
+        margin-top: 0.55rem;
         flex-wrap: wrap;
-        gap: .5rem 1rem;
+        gap: 0.5rem 1rem;
     }
 
     .footer-links a {
         text-decoration: underline;
-        text-underline-offset: .2em;
+        text-underline-offset: 0.2em;
     }
 
     .contact-hero {
         border-bottom: 1px solid rgba(16, 61, 46, 0.14);
-        background: linear-gradient(125deg, rgba(16, 61, 46, 0.94), rgba(16, 61, 46, 0.82)), url('/images/latar.jpg') center 45% / cover no-repeat;
+        background:
+            linear-gradient(125deg, rgba(16, 61, 46, 0.94), rgba(16, 61, 46, 0.82)),
+            url('/images/latar.jpg') center 45% / cover no-repeat;
         color: #fffdf7;
     }
 
@@ -317,14 +339,13 @@
 
     .contact-hero-copy {
         max-width: 48rem;
-        animation: contact-rise .65s ease-out both;
     }
 
     .contact-hero h1 {
-        margin-top: .9rem;
+        margin-top: 0.9rem;
         max-width: 12ch;
-        font: 400 clamp(2.5rem, 7vw, 5.25rem)/.98 var(--font-display);
-        letter-spacing: -.035em;
+        font: 400 clamp(2.5rem, 7vw, 5.25rem)/0.98 var(--font-display);
+        letter-spacing: -0.035em;
     }
 
     .contact-hero-copy > p:not(.eyebrow) {
@@ -342,7 +363,7 @@
     .contact-hero-actions {
         display: flex;
         flex-wrap: wrap;
-        gap: .75rem;
+        gap: 0.75rem;
         margin-top: 1.8rem;
     }
 
@@ -389,13 +410,21 @@
         padding: 1.5rem;
         background: rgba(255, 253, 247, 0.96);
         box-shadow: 0 12px 32px rgba(16, 61, 46, 0.08);
-        transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
-        animation: contact-rise .55s ease-out both;
+        transition:
+            transform 0.22s ease,
+            box-shadow 0.22s ease,
+            border-color 0.22s ease;
     }
 
-    .contact-card:nth-child(2) { animation-delay: .08s; }
-    .contact-card:nth-child(3) { animation-delay: .16s; }
-    .contact-card:nth-child(4) { animation-delay: .24s; }
+    .contact-card:nth-child(2) {
+        animation-delay: 0.08s;
+    }
+    .contact-card:nth-child(3) {
+        animation-delay: 0.16s;
+    }
+    .contact-card:nth-child(4) {
+        animation-delay: 0.24s;
+    }
 
     .contact-card:hover {
         transform: translateY(-4px);
@@ -427,7 +456,7 @@
 
     .contact-card p,
     .contact-card-muted {
-        margin-top: .55rem;
+        margin-top: 0.55rem;
         color: var(--color-muted);
         overflow-wrap: anywhere;
     }
@@ -435,12 +464,12 @@
     .contact-card-link {
         display: inline-flex;
         align-items: center;
-        gap: .4rem;
+        gap: 0.4rem;
         margin-top: 1.1rem;
         color: var(--color-pine);
         font-weight: 750;
         text-decoration: underline;
-        text-underline-offset: .25em;
+        text-underline-offset: 0.25em;
     }
 
     .contact-form-section {
@@ -478,7 +507,7 @@
 
     .form-field label {
         display: block;
-        margin-bottom: .45rem;
+        margin-bottom: 0.45rem;
         color: var(--color-pine);
         font-weight: 750;
     }
@@ -489,22 +518,24 @@
         width: 100%;
         min-width: 0;
         border: 1px solid #bac6b8;
-        border-radius: .55rem;
+        border-radius: 0.55rem;
         background: #fff;
         color: var(--color-ink);
         outline: none;
-        transition: border-color .18s ease, box-shadow .18s ease;
+        transition:
+            border-color 0.18s ease,
+            box-shadow 0.18s ease;
     }
 
     .form-field input,
     .form-field select {
         min-height: 3rem;
-        padding-inline: .85rem;
+        padding-inline: 0.85rem;
     }
 
     .form-field textarea {
         resize: vertical;
-        padding: .75rem .85rem;
+        padding: 0.75rem 0.85rem;
     }
 
     .form-field input:focus,
@@ -521,13 +552,13 @@
 
     .field-error {
         min-height: 1.25rem;
-        margin-top: .35rem;
+        margin-top: 0.35rem;
         color: #96382f;
-        font-size: .875rem;
+        font-size: 0.875rem;
     }
 
     .form-submit {
-        margin-top: .15rem;
+        margin-top: 0.15rem;
     }
 
     .form-submit .button-primary {
@@ -561,8 +592,14 @@
     }
 
     @keyframes contact-rise {
-        from { opacity: 0; transform: translateY(14px); }
-        to { opacity: 1; transform: translateY(0); }
+        from {
+            opacity: 0;
+            transform: translateY(14px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 
     @media (min-width: 48rem) {

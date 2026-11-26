@@ -1,0 +1,6 @@
+/* Disable browser image dragging; preserve clicks, scrolling and galleries. */
+img {
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    user-select: none;
+}

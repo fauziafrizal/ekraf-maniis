@@ -6,6 +6,8 @@ The output contains rendered pages and their public assets.
 from __future__ import annotations
 
 import argparse
+import base64
+import hashlib
 import re
 import shutil
 import time
@@ -18,7 +20,11 @@ from urllib.request import urlopen
 from xml.sax.saxutils import escape
 
 PROJECT = Path(__file__).resolve().parents[1]
-PAGES = ["/", "/profil", "/maniis", "/subsektor", "/program", "/kegiatan", "/kontak"]
+PAGES = ["/", "/profil", "/maniis", "/subsektor", "/program", "/kegiatan", "/kontak",
+         "/hub", "/marketplace", "/direktori", "/akademi", "/ekraf-pelajar", "/data-center",
+         "/peta", "/alat-usaha", "/ruang-saya", "/kalender", "/bantuan", "/layanan",
+         "/komunitas", "/survei", "/peta-umkm", "/creative-challenge", "/notifikasi",
+         "/studio-kreatif", "/klasifikasi-pembinaan", "/layanan-digital", "/pengurus/login"]
 MUSIC_ROUTE = "/musik-latar.mp3"
 IMAGE_EXTENSIONS = {".avif", ".gif", ".jpeg", ".jpg", ".png", ".webp"}
 PUBLIC_EXTENSIONS = {
@@ -117,7 +123,20 @@ def encode_page(html: str, origin: str, public_url: str, prefix: str, routes: se
                 rewritten += "#" + parsed.fragment
         return match.group("key") + match.group("quote") + escape_attribute(rewritten) + match.group("quote")
 
-    return ATTR_RE.sub(rewrite, html)
+    rendered = ATTR_RE.sub(rewrite, html)
+    # Static sites cannot use per-request CSP nonces. Hash the two trusted inline
+    # scripts and restrict network requests and form submissions.
+    hashes = ["'sha256-" + base64.b64encode(hashlib.sha256(body.encode()).digest()).decode() + "'"
+              for attrs, body in re.findall(r"<script\b([^>]*)>(.*?)</script>", rendered, re.S | re.I)
+              if not re.search(r"\bsrc\s*=", attrs)]
+    policy = ("default-src 'self'; script-src 'self' " + " ".join(hashes) +
+              "; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://tile.openstreetmap.org; "
+              "font-src 'self'; media-src 'self' blob:; connect-src 'self' https://tile.openstreetmap.org; "
+              "worker-src 'self' blob:; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'")
+    rendered = rendered.replace("<head>", '<head>\n<meta http-equiv="Content-Security-Policy" content="' + escape_attribute(policy) + '">', 1)
+    if re.search(r'name=["\x27]_token["\x27]', rendered, re.I):
+        raise RuntimeError("Unexpected CSRF token in static export")
+    return rendered
 
 
 def copy_public_assets(output: Path) -> None:
@@ -177,6 +196,11 @@ def main() -> None:
 
     copy_public_assets(output)
     export_music(origin, output)
+    for name in ("manifest.webmanifest", "sw.js", "offline.html"):
+        shutil.copy2(PROJECT / "public" / name, output / name)
+    with urlopen(origin + "/data-center/statistik.csv", timeout=30) as response:
+        (output / "data-center").mkdir(exist_ok=True)
+        (output / "data-center/statistik.csv").write_bytes(response.read())
     robots = PROJECT / "public" / "robots.txt"
     if robots.is_file():
         shutil.copy2(robots, output / "robots.txt")

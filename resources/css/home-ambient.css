@@ -1,0 +1,267 @@
+/* Shared ambient canvas for every page using the public layout. */
+html[data-ekraf-ambient] main#main-content {
+    --em-surface: #173e32;
+    --em-soft: #14382e;
+    --em-border: #527764;
+    --em-shadow: 0 10px 32px #051d1645;
+    --color-pine: #fff3dc;
+    --color-ink: #f2f6ec;
+    --color-muted: #c8ddce;
+    --color-line: #426b59;
+    --color-gold: #efca88;
+    position: relative;
+    isolation: isolate;
+    color: var(--color-ink);
+    background: #102f27;
+}
+.em-home-ambient {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: -1;
+    background:
+        radial-gradient(ellipse at 15% 25%, #39745355, transparent 55%),
+        radial-gradient(ellipse at 85% 80%, #284c3b, transparent 60%),
+        linear-gradient(150deg, #0c2b23 0%, #194b3b 45%, #102f27 100%);
+}
+.em-home-ambient::before {
+    content: '';
+    position: absolute;
+    inset: -18%;
+    background:
+        radial-gradient(ellipse at 23% 25%, #479a6260 0%, transparent 35%),
+        radial-gradient(ellipse at 77% 28%, #d6ac6450 0%, transparent 27%),
+        radial-gradient(ellipse at 69% 82%, #2d8d775e 0%, transparent 35%);
+    transform: translate3d(-3%, 0, 0) scale(1);
+}
+.em-home-ambient::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.45;
+    background-image: repeating-radial-gradient(
+        ellipse at 105% 82%,
+        transparent 0 52px,
+        #c5cda412 53px 54px,
+        transparent 55px 86px
+    );
+}
+@keyframes em-ambient-drift {
+    from {
+        transform: translate3d(-3%, 0, 0) scale(1);
+    }
+    to {
+        transform: translate3d(4%, -3%, 0) scale(1.13);
+    }
+}
+@media (prefers-reduced-motion: no-preference) {
+    .em-home-ambient::before {
+        animation: em-ambient-drift 18s ease-in-out infinite alternate;
+    }
+}
+main[data-page='home']
+    > :is(
+        .editorial-hero,
+        .editorial-intro,
+        .editorial-section,
+        .em-discovery,
+        .em-experience-section,
+        .em-audience,
+        .em-voice-welcome
+    ) {
+    background: transparent;
+    border-color: #a9c6ad25;
+}
+main[data-page='home'] > :is(.editorial-intro, .em-audience, .home-gallery) {
+    background: #0b2c2450;
+}
+main[data-page='home'] .em-live-strip {
+    background: #10362d;
+    border-color: #74947c66;
+}
+main[data-page='home']
+    :is(
+        .em-voice-inner,
+        .em-discovery-link,
+        .em-audience-link,
+        .em-extra-grid a,
+        .potential-card,
+        .home-gallery-card,
+        .home-preview-card > article
+    ) {
+    background: linear-gradient(140deg, #224e40, #143c30);
+    border-color: #a2c3aa40;
+    color: var(--color-ink);
+    box-shadow: 0 10px 28px #071d1630;
+}
+main[data-page='home']
+    :is(
+        .section-title,
+        .em-extra-grid a strong,
+        .em-discovery-link strong,
+        .em-audience-link strong,
+        .potential-card h3,
+        .em-voice-content h2
+    ) {
+    color: #fff3dc;
+}
+main[data-page='home']
+    :is(
+        .prose-copy,
+        .em-home-discovery-heading > p,
+        .em-discovery-link span,
+        .em-audience-link span span,
+        .em-extra-grid a > span,
+        .potential-card p,
+        .em-voice-status,
+        .em-home-intro-motto,
+        .home-gallery-card figcaption,
+        .home-preview-card > article p,
+        .home-preview-card > article dd,
+        .editorial-hero-credit
+    ) {
+    color: #c8ddce;
+}
+main[data-page='home']
+    :is(
+        .editorial-link,
+        .em-voice-transcript summary,
+        .em-extra-grid a > span:last-child,
+        .em-discovery-link svg,
+        .em-kicker,
+        .potential-card-arrow
+    ) {
+    color: #efca88;
+}
+main[data-page='home'] .em-experience-grid .em-experience-card {
+    --experience-bg: #285844;
+    --experience-ink: #fff4df;
+    --experience-muted: #d4e6d6;
+    border-color: #b3d3b735;
+}
+main[data-page='home'] .em-experience-grid .em-experience-card--gold {
+    --experience-bg: #52462d;
+    --experience-ink: #fff1d0;
+    --experience-muted: #eddfbf;
+}
+main[data-page='home'] .em-experience-grid .em-experience-card--clay {
+    --experience-bg: #514032;
+    --experience-ink: #fff1e1;
+    --experience-muted: #eadace;
+}
+main[data-page='home'] .em-experience-grid .em-experience-card--forest {
+    --experience-bg: #19473d;
+    --experience-ink: #f4f8e9;
+    --experience-muted: #d1e5da;
+}
+main[data-page='home'] .em-experience-grid .em-experience-card:first-child {
+    --experience-bg: #204e3b;
+    --experience-ink: #fff3dc;
+    --experience-muted: #d8e8d9;
+}
+main[data-page='home'] .em-experience-links .button-primary {
+    background: #edc784;
+    color: #16382b;
+}
+main[data-page='home'] .em-experience-links .button-secondary {
+    background: transparent;
+    color: #fff3dc;
+    border-color: #aac4ac;
+}
+main[data-page='home'] .em-voice-play {
+    background: #edc784;
+    color: #17382e;
+}
+main[data-page='home'] .em-voice-orb {
+    background: #0c3027;
+    color: #edc784;
+}
+main[data-page='home'] .editorial-contact {
+    background: linear-gradient(120deg, #173e32, #295b45);
+}
+main[data-page='home'] .editorial-contact .editorial-link {
+    color: #17382e;
+}
+main[data-page='home'] .card-carousel-controls button {
+    background: #1e4a3a;
+    color: #fff3dc;
+}
+/* Match the surrounding chrome without changing the user's selected theme. */
+html[data-ekraf-ambient] {
+    background: #102f27;
+}
+html[data-ekraf-ambient] body {
+    background: #102f27;
+}
+html[data-ekraf-ambient] body .site-header[data-site-header] {
+    background: #12352b;
+    border-color: #4d725f;
+    --color-pine: #fff3dc;
+    --color-muted: #d0e2d3;
+}
+html[data-ekraf-ambient]
+    body
+    .site-header
+    :is(.wordmark, .nav-link, .em-header-search, .menu-toggle, .site-preference) {
+    color: #fff3dc;
+}
+html[data-ekraf-ambient] body .site-header :is(.site-preferences, .mobile-nav) {
+    background: #153f33;
+    border-color: #4d725f;
+}
+html[data-ekraf-ambient]
+    body
+    .site-header
+    :is(.nav-link, .site-preference):is(:hover, [aria-current='page'], [aria-pressed='true']) {
+    background: #2a5644;
+    color: #fff3dc;
+    border-color: #8cac94;
+}
+html[data-ekraf-ambient] body .site-header .em-header-search:hover {
+    background: #2a5644;
+}
+html[data-ekraf-ambient] body .site-header .menu-toggle {
+    border-color: #8cac94;
+}
+main[data-page='home'] :focus-visible {
+    outline-color: #efca88;
+}
+@media (prefers-reduced-motion: reduce) {
+    .em-home-ambient::before {
+        animation: none;
+    }
+}
+@media print {
+    .em-home-ambient {
+        display: none;
+    }
+}
+
+/* Dark mode has its own forest palette; both modes keep a non-white background. */
+:root[data-theme='dark'][data-ekraf-ambient] {
+    background: #0d211a;
+}
+:root[data-theme='dark'][data-ekraf-ambient] body {
+    background: #0d211a;
+}
+:root[data-theme='dark'][data-ekraf-ambient] .site-header[data-site-header] {
+    background: #102a22;
+}
+:root[data-theme='dark'][data-ekraf-ambient] .site-header :is(.site-preferences, .mobile-nav) {
+    background: #13362b;
+}
+:root[data-theme='dark'][data-ekraf-ambient] main#main-content {
+    background: #0d211a;
+    --em-surface: #15372d;
+    --em-soft: #112e25;
+}
+:root[data-theme='dark'] .em-home-ambient {
+    background:
+        radial-gradient(ellipse at 18% 25%, #275b4050, transparent 55%),
+        radial-gradient(ellipse at 85% 80%, #153d31, transparent 60%),
+        linear-gradient(150deg, #081e18, #123e31 48%, #0a251e);
+}
+:root[data-theme='dark'] .em-home-ambient::before {
+    opacity: 0.65;
+}

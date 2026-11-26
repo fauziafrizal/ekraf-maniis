@@ -1,0 +1,46 @@
+/* Stable first paint: installed system fonts, no deferred text entrance. */
+html {
+    background: #f8f5ed;
+}
+html[data-theme='dark'] {
+    background: #12291f;
+}
+[data-welcome-audio][hidden] {
+    display: none !important;
+}
+[data-welcome-play]:disabled:not([data-welcome-playing] *) {
+    opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+    [data-live-toggle] {
+        display: none !important;
+    }
+}
+/* Do not animate text at navigation or reload. Interactive states remain available. */
+main [data-reveal],
+.contact-hero-copy,
+.contact-card,
+.editorial-hero-text {
+    animation: none !important;
+}
+
+/* The original mark fits a reserved, non-animated header slot. */
+.site-header .brand-logo {
+    display: block;
+    flex: 0 0 auto;
+    width: 2.875rem;
+    height: 2.75rem;
+    max-width: none;
+    max-height: none;
+    object-fit: contain;
+    opacity: 1;
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+}
+@media (max-height: 29rem) {
+    .site-header .brand-logo {
+        width: 2.2rem;
+        height: 2.1rem;
+    }
+}

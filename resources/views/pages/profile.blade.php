@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
 @section('content')
-    <x-page-heading :title="'Profil '.$site['short_name']" eyebrow="Tentang kami" :description="$site['name']">
+    <x-page-heading :title="'Profil ' . $site['short_name']" eyebrow="Tentang kami" :description="$site['name']">
         <a class="button-primary" href="#pengurus">Lihat Struktur Pengurus</a>
     </x-page-heading>
 
@@ -35,16 +35,18 @@
                 @endunless
             </header>
 
-            <div class="leadership-grid">
+            @php
+                $hasHangingPortraits = $leadership->contains(fn ($leader) => $leader['member'] && $memberPhotos->get($leader['member']->id));
+            @endphp
+            @if ($hasHangingPortraits)
+                <p class="em-hanging-guide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M8 12V5a2 2 0 0 1 4 0v5m0-2a2 2 0 0 1 4 0v3m0-1a2 2 0 0 1 4 0v5a6 6 0 0 1-6 6h-2a6 6 0 0 1-5-3l-3-5a2 2 0 0 1 3-2l1 1"/></svg> Foto pengurus berayun otomatis secara perlahan.</p>
+                <button type="button" class="em-hanging-motion-toggle" data-hanging-motion-toggle aria-pressed="true" aria-label="Ayunan otomatis foto pengurus" disabled>Jeda ayunan</button>
+            @endif
+            <div @class(['leadership-grid', 'em-hanging-grid' => $hasHangingPortraits])>
                 @foreach ($leadership as $role => $leader)
                     @php($member = $leader['member'])
-                    <x-leadership-card
-                        :role="$role"
-                        :position="$leader['position']"
-                        :member="$member"
-                        :photo="$member ? $memberPhotos->get($member->id) : null"
-                        :show-pending-note="$hasPublishedLeaders"
-                    />
+                    <x-leadership-card :role="$role" :position="$leader['position']" :member="$member" :photo="$member ? $memberPhotos->get($member->id) : null"
+                        :show-pending-note="$hasPublishedLeaders" :hanging="$hasHangingPortraits" />
                 @endforeach
             </div>
 
@@ -55,7 +57,8 @@
                         @foreach ($otherMembers as $member)
                             <article class="leadership-member">
                                 @if ($photo = $memberPhotos->get($member->id))
-                                    <x-public-photo :photo="$photo" class="leadership-photo" image-class="leadership-portrait" />
+                                    <x-public-photo :photo="$photo" class="leadership-photo"
+                                        image-class="leadership-portrait" />
                                 @endif
                                 <div class="leadership-content">
                                     <p class="leadership-position">{{ $member->position }}</p>

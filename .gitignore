@@ -25,3 +25,11 @@ _ide_helper.php
 Homestead.json
 Homestead.yaml
 Thumbs.db
+/.venv/
+/ml/__pycache__/
+
+# Local neural voice preview; confirm model and dataset usage rights before publishing.
+/public/audio/sapa-ekraf-welcome.m4a
+
+/_site/
+/public/audio/ekraf-maniis.mp3

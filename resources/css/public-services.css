@@ -1,0 +1,167 @@
+/* Public information and service tools. */
+.em-service-layout {
+    display: grid;
+    gap: clamp(2.5rem, 6vw, 5rem);
+    padding-block: clamp(2rem, 5vw, 4rem);
+}
+.em-service-layout .section-title {
+    margin-bottom: 1rem;
+}
+.em-services-grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+}
+.em-service-card,
+.em-search-item,
+.em-agenda-item,
+.em-faq details,
+.em-filter-tools {
+    background: var(--em-surface);
+    border: 1px solid var(--em-border);
+    border-radius: 1rem;
+    padding: clamp(1rem, 2vw, 1.5rem);
+    color: var(--color-ink);
+}
+.em-service-card h3,
+.em-search-item h3,
+.em-agenda-item h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--color-pine);
+    line-height: 1.3;
+}
+.em-service-card p,
+.em-search-item p,
+.em-agenda-item p,
+.em-faq p {
+    color: var(--color-muted);
+    margin-top: 0.5rem;
+    overflow-wrap: anywhere;
+}
+.em-service-note {
+    margin-block: 1rem;
+    padding: 1rem;
+    background: var(--em-soft);
+    border-inline-start: 3px solid #9e8651;
+    color: var(--color-muted);
+}
+.em-agenda-item {
+    display: grid;
+    grid-template-columns: 5rem 1fr;
+    gap: 1rem;
+    margin-top: 1rem;
+    align-items: start;
+}
+.em-agenda-date {
+    display: grid;
+    text-align: center;
+    border-radius: 0.7rem;
+    padding: 0.55rem;
+    background: #173f35;
+    color: #fff9ed;
+    line-height: 1.3;
+}
+.em-agenda-date strong {
+    font-size: 2rem;
+}
+.em-agenda-date span {
+    font-size: 0.78rem;
+}
+.em-agenda-item h3 {
+    margin-top: 0.55rem;
+}
+.em-search-list,
+.em-faq {
+    display: grid;
+    gap: 0.7rem;
+}
+.em-search-item span {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--color-muted);
+}
+.em-search-item a,
+.em-agenda-item h3 a {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+}
+.em-filter-tools {
+    display: grid;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+.em-filter-tools input,
+.em-filter-tools select {
+    width: 100%;
+    min-height: 2.8rem;
+    border: 1px solid var(--em-border);
+    border-radius: 0.5rem;
+    padding: 0.6rem 0.8rem;
+    background: var(--em-soft);
+    color: var(--color-ink);
+}
+.em-filter-tools label {
+    font-weight: 650;
+}
+.em-filter-tools p {
+    font-size: 0.85rem;
+    color: var(--color-muted);
+}
+.em-faq summary {
+    cursor: pointer;
+    font-weight: 700;
+}
+.em-faq details[open] summary {
+    margin-bottom: 0.5rem;
+}
+.em-top {
+    position: fixed;
+    z-index: 9;
+    inset-inline-end: 1rem;
+    inset-block-end: 1rem;
+    background: #173f35;
+    color: #fff9ed;
+    border: 1px solid #789782;
+    border-radius: 50%;
+    width: 3rem;
+    height: 3rem;
+    cursor: pointer;
+    box-shadow: var(--em-shadow);
+}
+.em-share {
+    margin-top: 1rem;
+    color: #fff9ed;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.em-share-result {
+    overflow-wrap: anywhere;
+    font-size: 0.85rem;
+}
+[data-em-item][hidden],
+[data-em-controls][hidden],
+[data-em-empty][hidden],
+[data-em-top][hidden],
+[data-em-share][hidden] {
+    display: none !important;
+}
+/* Keep full navigation visible on wide displays; preserve compact menu elsewhere. */
+@media (min-width: 75rem) {
+    .site-header .desktop-nav {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 0.1rem;
+    }
+    .site-header .desktop-nav .nav-link {
+        padding-inline: 0.52rem;
+    }
+    .site-header .mobile-menu {
+        display: none;
+    }
+    .site-header .wordmark {
+        flex-shrink: 0;
+    }
+}

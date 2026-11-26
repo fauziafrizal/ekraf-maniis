@@ -1,0 +1,138 @@
+/* Smart Creative Hub */
+.em-hub-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+    gap: 1rem;
+    margin-block: 1rem;
+}
+.em-hub-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1.5rem;
+    border: 1px solid var(--em-border);
+    border-radius: 1.2rem;
+    background: var(--em-surface);
+    color: var(--color-pine);
+    box-shadow: var(--em-shadow);
+    text-decoration: none;
+    min-width: 0;
+}
+.em-hub-card h3 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    line-height: 1.25;
+}
+.em-hub-card p {
+    color: var(--color-muted);
+    flex: 1;
+}
+.em-hub-card span {
+    color: var(--color-muted);
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+.em-hub-card strong {
+    font-size: 0.87rem;
+    text-decoration: underline;
+    text-underline-offset: 0.25em;
+}
+.em-hub-card:hover {
+    border-color: #809a86;
+}
+.em-metric strong {
+    color: var(--color-pine);
+    font: 400 3rem/1.1 var(--font-display);
+}
+.em-metric-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-block: 1rem 0.35rem;
+}
+.em-service-layout meter {
+    display: block;
+    width: 100%;
+    height: 0.9rem;
+    accent-color: #38785e;
+}
+.em-price {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+.em-listing-category {
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+.em-service-card .button-primary {
+    margin-top: 1rem;
+}
+.em-favorite {
+    display: block;
+    margin-top: 0.7rem;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.em-favorite[aria-pressed='true'] {
+    font-weight: 700;
+}
+.em-favorite[hidden],
+.em-progress[hidden] {
+    display: none;
+}
+.em-lesson {
+    margin-top: 0.8rem;
+}
+.em-lesson summary {
+    cursor: pointer;
+    font-weight: 700;
+}
+.em-progress {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    margin-top: 1rem;
+    font-weight: 650;
+}
+.em-admin-form {
+    display: grid;
+    gap: 0.65rem;
+    max-width: 48rem;
+}
+.em-admin-form label {
+    font-weight: 650;
+}
+.em-admin-form :is(input:not([type='checkbox']), select, textarea) {
+    width: 100%;
+    border: 1px solid var(--em-border);
+    background: var(--em-soft);
+    color: var(--color-ink);
+    padding: 0.65rem;
+    border-radius: 0.5rem;
+}
+.em-admin-form input[type='checkbox'] {
+    accent-color: #38785e;
+}
+.em-admin-record {
+    margin-block: 0.7rem;
+}
+.em-admin-record summary {
+    cursor: pointer;
+    font-weight: 700;
+}
+.em-admin-record form {
+    margin-top: 1rem;
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .em-hub-card {
+        transition: transform 0.2s;
+    }
+    .em-hub-card:hover {
+        transform: translateY(-3px);
+    }
+}
+
+[data-em-calculator][hidden],
+[data-em-install][hidden] {
+    display: none !important;
+}

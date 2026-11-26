@@ -1,0 +1,134 @@
+/* Dark editorial rails: static at rest, drag only after visitor interaction. */
+.em-drag-rail .card-carousel-tools {
+    min-height: 3rem;
+    margin-bottom: 0.65rem;
+}
+.em-drag-hint {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+}
+.em-drag-hint svg {
+    width: 1.1rem;
+    height: 1.1rem;
+    flex: none;
+}
+.em-drag-rail .card-carousel-tools[data-no-overflow] {
+    visibility: hidden;
+}
+.em-drag-rail .card-carousel-position {
+    width: clamp(5rem, 15vw, 10rem);
+    height: 3px;
+    background: #78968650;
+}
+.em-drag-rail .card-carousel-position::after {
+    background: #e8c48a;
+}
+.em-drag-rail .card-carousel-buttons button {
+    min-height: 2.6rem;
+    border: 1px solid #709481;
+    border-radius: 999px;
+    padding-inline: 0.9rem;
+    font-size: 0.8rem;
+    background: #173e32;
+    color: #f5eddc;
+}
+.em-drag-rail .card-carousel-buttons button:hover:not(:disabled) {
+    background: #e8c48a;
+    color: #173e32;
+    border-color: #e8c48a;
+}
+.em-drag-rail .card-carousel-buttons button:disabled {
+    background: #14332a;
+    color: #a5bcac;
+    border-color: #426452;
+}
+.em-drag-rail [data-card-track] {
+    scrollbar-color: #809e89 #163d31;
+    scroll-snap-type: x proximity;
+    align-items: stretch;
+}
+.em-drag-rail [data-card-track] > * {
+    flex-basis: 84%;
+}
+.em-drag-rail [data-card-track][data-card-dragging] {
+    scroll-snap-type: none;
+    user-select: none;
+}
+.em-drag-rail [data-card-track] img {
+    -webkit-user-drag: none;
+    user-select: none;
+}
+main[data-page='home'] .em-home-service-track,
+main[data-page='home'] .em-home-gallery-track {
+    display: flex;
+    gap: 1rem;
+    align-items: stretch;
+}
+main[data-page='home'] .em-home-service-track .em-experience-card {
+    min-height: 16rem;
+    flex-basis: 82%;
+    border-radius: 1.25rem;
+    box-shadow: 0 9px 22px #071d1630;
+}
+main[data-page='home'] .em-home-service-track .em-experience-card:first-child .em-experience-copy strong {
+    font-size: clamp(1.4rem, 2vw, 1.9rem);
+}
+main[data-page='home'] .em-home-gallery-track .home-gallery-card {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+main[data-page='home'] .em-home-gallery-track .home-gallery-card figcaption {
+    font: inherit;
+    font-size: 0.9rem;
+    padding: 1rem;
+    flex: 1;
+}
+main[data-page='home'] .em-home-gallery-track .home-gallery-card figcaption > :first-child {
+    font: inherit;
+}
+main[data-page='home'] .em-home-gallery-track img {
+    aspect-ratio: 16/10;
+    object-fit: cover;
+    width: 100%;
+    height: auto;
+}
+main[data-page='home'] .em-drag-rail [data-card-dragging] > * {
+    transform: none !important;
+    transition: none !important;
+}
+@media (min-width: 48rem) {
+    .em-drag-rail [data-card-track] > * {
+        flex-basis: 46%;
+    }
+    main[data-page='home'] .em-home-service-track .em-experience-card {
+        flex-basis: 43%;
+    }
+}
+@media (min-width: 64rem) {
+    .em-drag-rail [data-card-track] > * {
+        flex-basis: 37%;
+    }
+    main[data-page='home'] .em-home-service-track .em-experience-card {
+        flex-basis: 29%;
+    }
+}
+.em-drag-rail[data-single-card] [data-card-track] > * {
+    flex-basis: min(100%, 34rem);
+}
+@media (hover: hover) and (pointer: fine) {
+    .em-drag-rail [data-card-track][data-card-overflow] {
+        cursor: grab;
+    }
+    .em-drag-rail [data-card-track][data-card-dragging],
+    .em-drag-rail [data-card-track][data-card-dragging] * {
+        cursor: grabbing !important;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .em-drag-rail [data-card-track] {
+        scroll-behavior: auto;
+    }
+}
