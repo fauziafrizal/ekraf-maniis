@@ -1,3 +1,4 @@
+@php($staticAssistant = config('ekraf.static_preview', false))
 <button class="em-assistant-launch" type="button" data-assistant-open hidden aria-haspopup="dialog"
     aria-label="Buka asisten Ekraf">
     <span class="em-assistant-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -8,8 +9,9 @@
     <span class="em-assistant-launch-copy"><strong>Tanya Ekraf</strong><small>Asisten informasi</small></span>
 </button>
 <dialog class="em-assistant-dialog" data-assistant-dialog aria-labelledby="assistant-title"
-    data-endpoint="{{ route('creative.assistant') }}"
-    data-ai-enabled="{{ config('services.ekraf_ai.enabled') && filled(config('services.ekraf_ai.key')) && filled(config('services.ekraf_ai.model')) ? '1' : '0' }}">
+    data-assistant-static="{{ $staticAssistant ? '1' : '0' }}"
+    @unless($staticAssistant) data-endpoint="{{ route('creative.assistant') }}" @endunless
+    data-ai-enabled="{{ ! $staticAssistant && config('services.ekraf_ai.enabled') && filled(config('services.ekraf_ai.key')) && filled(config('services.ekraf_ai.model')) ? '1' : '0' }}">
     <div class="em-assistant-head">
         <div class="em-assistant-identity">
             <span class="em-assistant-avatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M12 3c0 5.5 3.5 9 9 9-5.5 0-9 3.5-9 9 0-5.5-3.5-9-9-9 5.5 0 9-3.5 9-9Z"/><path d="M19 3v4m-2-2h4"/></svg></span>
@@ -34,8 +36,8 @@
             data-voice-speak hidden>Bacakan jawaban</button><button type="button" data-voice-stop hidden>Hentikan
             suara</button><span data-voice-status role="status"></span></div>
     <details class="em-assistant-privacy"><summary>Informasi suara dan privasi</summary><p>Dikte suara memakai layanan browser jika didukung; suara dapat diproses oleh penyedia browser. Periksa teks sebelum mengirim.</p></details>
-    <form class="em-assistant-form" data-assistant-form>
-        @csrf
+    <form class="em-assistant-form" method="post" data-assistant-form>
+        @unless($staticAssistant) @csrf @endunless
         <label class="sr-only" for="assistant-question">Pertanyaan Anda</label>
         <input id="assistant-question" name="question" required minlength="2" maxlength="400" autocomplete="off"
             placeholder="Tanyakan sesuatu...">
@@ -43,6 +45,13 @@
     </form>
     <label class="em-assistant-consent" data-assistant-consent hidden><input type="checkbox" data-assistant-ai> Gunakan
         AI eksternal (pertanyaan dikirim ke penyedia AI).</label>
-    <p class="em-assistant-note" data-assistant-mode>Mode pencarian informasi lokal. Jangan masukkan data pribadi.</p>
+    <p class="em-assistant-note" data-assistant-mode>{{ $staticAssistant ? 'Panduan otomatis berbasis informasi publik; pertanyaan diproses di browser, bukan AI eksternal.' : 'Mode pencarian informasi lokal. Jangan masukkan data pribadi.' }}</p>
     </div>
+    @if ($staticAssistant)
+        <template data-assistant-knowledge>
+            @foreach (app(\App\Support\EkrafAssistant::class)->knowledge() as $entry)
+                <div data-keywords="{{ $entry['keywords'] }}"><a href="{{ $entry['url'] }}">{{ $entry['title'] }}</a><p>{{ $entry['answer'] }}</p></div>
+            @endforeach
+        </template>
+    @endif
 </dialog>

@@ -27,4 +27,4 @@ Folder `_site` berisi halaman HTML, sitemap, aset Vite, foto publik, dan `musik-
 
 ## Versi publik
 
-GitHub Pages adalah ekspor statis, bukan server Laravel. Fitur browser seperti pencarian menu, kalkulator, kuis, favorit, animasi dan draf WhatsApp tersedia. Formulir server, login, pelacakan, AI eksternal dan prediksi tidak diaktifkan; tombol Tanya Ekraf membuka FAQ. Database produksi dan kunci rahasia tidak pernah diekspor. Kalender dan statistik adalah snapshot publik.
+GitHub Pages adalah ekspor statis, bukan server Laravel. Fitur browser seperti pencarian menu, kalkulator, kuis, favorit, animasi dan draf WhatsApp tersedia. Formulir server, login, pelacakan, AI eksternal dan prediksi tidak diaktifkan; Tanya Ekraf menggunakan pencarian informasi publik di browser, tanpa AI eksternal. Database produksi dan kunci rahasia tidak pernah diekspor. Kalender dan statistik adalah snapshot publik.

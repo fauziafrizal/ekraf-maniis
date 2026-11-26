@@ -70,7 +70,7 @@ class EkrafAssistant
         return array_values(array_unique(array_filter($tokens, fn ($word) => mb_strlen($word) > 2 && ! in_array($word, ['apa', 'saya', 'yang', 'dan', 'atau', 'untuk', 'dengan', 'cara', 'bagaimana', 'bisa', 'mau', 'ingin', 'ada', 'itu', 'di', 'ke', 'ekraf', 'maniis', 'tentang', 'apakah', 'tolong']))));
     }
 
-    private function knowledge(): array
+    public function knowledge(): array
     {
         $base = [
             ['Profil Ekraf', 'organisasi pengurus ketua profil visi misi bergabung', config('ekraf.profile')[0], route('profile', absolute: false)],

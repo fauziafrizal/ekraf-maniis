@@ -181,12 +181,9 @@
             </div>
         </details>
     </footer>
-    @unless (request()->routeIs('login', 'creative.admin', 'office.*', 'community.verify') || config('ekraf.static_preview'))
+    @unless (request()->routeIs('login', 'creative.admin', 'office.*', 'community.verify', 'desk.queue'))
         <x-ekraf-assistant />
     @endunless
-    @if (config('ekraf.static_preview'))
-        <a class="em-assistant-launch" href="{{ route('services', absolute: false) }}#faq"><span class="em-assistant-symbol" aria-hidden="true">?</span><span class="em-assistant-launch-copy"><strong>Tanya Ekraf</strong><small>Panduan versi publik</small></span></a>
-    @endif
     <button type="button" class="em-top" aria-label="Kembali ke atas" data-em-top hidden>↑</button>
     <x-visitor-navigator />
     <audio data-site-music src="{{ route('site.music', absolute: false) }}" preload="none" loop></audio>
